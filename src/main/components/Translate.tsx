@@ -1,5 +1,9 @@
+import { TranslateBox } from "./box/TranslateBox";
+
 export function Translate(){
     return (
-        <>변환창</>
+        <>
+            <TranslateBox />
+        </>
     )
 }
