@@ -1,8 +1,14 @@
+import { Outlet } from "react-router-dom";
+import { Footer } from "./common/Footer";
+import { Header } from "./common/Header";
+
 function App() {
 
   return (
     <>
-      <div>테스트</div>
+      <Header />
+      <Outlet />
+      <Footer />
     </>
   )
 }
