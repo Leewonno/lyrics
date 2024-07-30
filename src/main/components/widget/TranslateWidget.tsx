@@ -2,8 +2,9 @@ export function TranslateWidget(){
     return (
         <>
             <form>
-                <input />
-                <textarea />
+                <textarea placeholder="가사를 입력하세요"/>
+                ▶
+                <textarea readOnly />
             </form>
         </>
     )
