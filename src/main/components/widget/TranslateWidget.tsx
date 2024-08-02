@@ -17,7 +17,7 @@ export function TranslateWidget() {
   const translateCopy = () => {
     navigator.clipboard.writeText(translation);
     setTimeout(()=>{
-      dispatch(non_visible)
+      dispatch()
     }, 5000)
     setMessage("복사되었습니다!")
   }
