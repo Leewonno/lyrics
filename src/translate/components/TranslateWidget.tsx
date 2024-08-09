@@ -1,7 +1,102 @@
 import { useState } from "react"
-import { Toast } from "../../common/Toast"
-import { useDispatch, useSelector } from 'react-redux'
-import { visible, non_visible } from '../../redux/toast';
+import { useDispatch } from 'react-redux'
+import { visible, setMessage } from '../../redux/toast';
+import styled from "styled-components";
+
+const TranslateWidgetStyled = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+`;
+
+const TranslateWidgetFormStyled = styled.form`
+  width: 1000px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const TranslateSettingBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+`;
+
+const TranslateSettingTimeBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  input{
+    text-align: right;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #e5e5e5;
+  }
+
+  label{
+    border: 1px solid #e5e5e5;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: #e5e5e5;
+    padding: 5px 10px;
+  }
+
+  span{
+    border: 1px solid #e5e5e5;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #e5e5e5;
+    padding: 5px 10px;
+  }
+`
+
+const TranslateButtonBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 50px;
+
+  button {
+    width: 100px;
+    cursor: pointer;
+    height: 35px;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 200;
+    user-select: none;
+  }
+
+  button:focus{
+    outline: 3px solid #c8c8fa;
+  }
+`;
+
+const TranslateTextareaBox = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  textarea{
+    width: 100%;
+    height: 350px;
+    padding: 12px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    resize: none;
+  }
+
+  textarea:focus{
+    outline: 3px solid #c8c8fa;
+  }
+`;
 
 export function TranslateWidget() {
 
@@ -9,19 +104,16 @@ export function TranslateWidget() {
   const [translation, setTranslation] = useState<string>("")
   const [viewTime, setViewTime] = useState<number>(1)
 
-  const [message, setMessage] = useState<string>("")
-
-  const toast = useSelector((state:any) => state.visible.value)
   const dispatch = useDispatch();
-  
 
+  const toastCall = (msg: string)=>{
+    dispatch(setMessage(msg))
+    dispatch(visible())
+  }
+  
   const translateCopy = () => {
     navigator.clipboard.writeText(translation);
-    dispatch(visible())
-    setTimeout(()=>{
-      dispatch(non_visible())
-    }, 2000)
-    setMessage("복사되었습니다!")
+    toastCall("복사되었습니다");
   }
 
   const numberCheck = (time: string) => {
@@ -37,6 +129,7 @@ export function TranslateWidget() {
   const resetTextarea = () => {
     setLyrics("")
     setTranslation("")
+    toastCall("초기화 성공");
   }
 
   const translateRun = () => {
@@ -44,7 +137,7 @@ export function TranslateWidget() {
       alert("가사를 입력해 주세요!")
       return;
     }
-    translate()
+    translate();
   }
 
   const translate = async () => {
@@ -57,45 +150,53 @@ export function TranslateWidget() {
       const view_time_origin = index * viewTime;
       const view_time_next = index * viewTime + viewTime;
 
-      const origin_hour = Math.floor(view_time_origin/3600)
-      const origin_mins = Math.floor((view_time_origin - origin_hour*3600)/60)
-      const origin_secs = view_time_origin - origin_hour*3600 - origin_mins*60
+      const origin_hour = Math.floor(view_time_origin/3600);      
+      const origin_mins = Math.floor((view_time_origin - origin_hour*3600)/60);
+      const origin_secs = view_time_origin - origin_hour*3600 - origin_mins*60;
+
+      const origin_hour_str = String(origin_hour).padStart(2, '0');
+      const origin_mins_str = String(origin_mins).padStart(2, '0');
+      const origin_secs_str = String(origin_secs).padStart(2, '0');
 
       const next_hour = Math.floor(view_time_next/3600)
       const next_mins = Math.floor((view_time_next - next_hour*3600)/60)
       const next_secs = view_time_next - next_hour*3600 - next_mins*60
 
-      const second: string = `${origin_hour}:${origin_mins}:${origin_secs}:00 --> ${next_hour}:${next_mins}:${next_secs}:00`.concat("\n");
+      const next_hour_str = String(next_hour).padStart(2, '0');
+      const next_mins_str = String(next_mins).padStart(2, '0');
+      const next_secs_str = String(next_secs).padStart(2, '0');
+
+      const second: string = `${origin_hour_str}:${origin_mins_str}:${origin_secs_str}:00 --> ${next_hour_str}:${next_mins_str}:${next_secs_str}:00`.concat("\n");
       const third: string = value.concat("\n");
       const sum: string = first + second + third;
-      const temp: string = translation + sum;
+      const temp: string = sum;
       result += temp.concat("\n");
     })
-    setTranslation(result)
+    setTranslation(result);
+    toastCall("변환 성공");
   }
 
   return (
-    <>
-      {
-      toast ?
-      <Toast>{message}</Toast>
-      :
-      <></>
-      }
-      
-      <form>
-        <div>
-          <textarea placeholder="가사를 입력하세요" value={lyrics} onChange={(e) => setLyrics(e.target.value)} />
-          <button type="button" onClick={resetTextarea}>초기화</button>
-        </div>
-        ▶
-        <div>
-          <button type="button" onClick={translateCopy}>복사</button>
-          <textarea readOnly value={translation} />
-          <input type="number" min={1} value={viewTime} onChange={(e) => numberCheck(e.target.value)} />
-        </div>
-        <button type="button" onClick={translateRun}>변환</button>
-      </form>
-    </>
+      <TranslateWidgetStyled>
+        <TranslateWidgetFormStyled>
+          <TranslateSettingBox>
+            <TranslateSettingTimeBox>
+              <label htmlFor="view_time">재생시간</label>
+              <input id="view_time" type="number" min={1} value={viewTime} onChange={(e) => numberCheck(e.target.value)} />
+              <span>초</span>
+            </TranslateSettingTimeBox>
+          </TranslateSettingBox>
+          <TranslateButtonBox>
+            <button style={{backgroundColor: '#0d6efd'}} type="button" onClick={translateRun}>변환</button>
+            <button style={{backgroundColor: '#198754'}} type="button" onClick={translateCopy}>복사</button>
+            <button style={{backgroundColor: '#dc3545'}} type="button" onClick={resetTextarea}>초기화</button>
+          </TranslateButtonBox>
+          <TranslateTextareaBox>
+            <textarea placeholder="가사를 입력하세요" value={lyrics} onChange={(e) => setLyrics(e.target.value)} />
+            <span>▼</span>
+            <textarea readOnly value={translation} />
+          </TranslateTextareaBox>
+        </TranslateWidgetFormStyled>
+      </TranslateWidgetStyled>
   )
 }

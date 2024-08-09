@@ -2,16 +2,19 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const toastSlice = createSlice({
     name: "toast",
-    initialState: { value: false },
+    initialState: { status: false, message:"" },
     reducers: {
         visible: (state) => {
-            state.value = true;
+            state.status = true;
         },
-        non_visible: (state) => {
-            state.value = false;
-        }
+        noneVisible: (state) => {
+            state.status = false;
+        },
+        setMessage: (state, actions)=>{
+            state.message = actions.payload
+        },
     },
 });
 
-export const { visible, non_visible } = toastSlice.actions
+export const { visible, noneVisible, setMessage } = toastSlice.actions
 export default toastSlice.reducer;
