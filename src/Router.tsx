@@ -2,6 +2,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import { Main } from './main/Main';
+import { Translate } from './translate/Translate';
 
 const router = createBrowserRouter([
   {
@@ -12,8 +13,13 @@ const router = createBrowserRouter([
         path: '',
         element: <Main />,
       },
+      {
+        path: '/translate',
+        element: <Translate />
+      }
     ],
   },
+  
 ]);
 
 export default router;
