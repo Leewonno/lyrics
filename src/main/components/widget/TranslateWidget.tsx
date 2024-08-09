@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Toast } from "./Toast"
 import { useDispatch, useSelector } from 'react-redux'
+import { visible, non_visible } from '../../../redux/toast';
 
 export function TranslateWidget() {
 
@@ -10,14 +11,15 @@ export function TranslateWidget() {
 
   const [message, setMessage] = useState<string>("")
 
-  // const toast = useSelector((state) => state.visible.value)
-  // const dispatch = useDispatch();
+  const toast = useSelector((state) => state.visible.value)
+  const dispatch = useDispatch();
   
 
   const translateCopy = () => {
     navigator.clipboard.writeText(translation);
+    dispatch(visible())
     setTimeout(()=>{
-      // dispatch()
+      dispatch(non_visible())
     }, 5000)
     setMessage("복사되었습니다!")
   }
