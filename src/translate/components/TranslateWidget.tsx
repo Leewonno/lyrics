@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Toast } from "./Toast"
 import { useDispatch, useSelector } from 'react-redux'
-import { visible, non_visible } from '../../../redux/toast';
+import { visible, non_visible } from '../../redux/toast';
 
 export function TranslateWidget() {
 
@@ -20,7 +20,7 @@ export function TranslateWidget() {
     dispatch(visible())
     setTimeout(()=>{
       dispatch(non_visible())
-    }, 5000)
+    }, 2000)
     setMessage("복사되었습니다!")
   }
 
