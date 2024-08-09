@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Toast } from "./Toast"
+import { Toast } from "../../common/Toast"
 import { useDispatch, useSelector } from 'react-redux'
 import { visible, non_visible } from '../../redux/toast';
 

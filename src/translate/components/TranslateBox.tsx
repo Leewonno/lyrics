@@ -1,11 +1,14 @@
+import styled from "styled-components";
 import { TranslateWidget } from "./TranslateWidget";
 
-export function TranslateBox(){
-    return (
-        <>
-            <section>
-                <TranslateWidget />
-            </section>
-        </>
-    )
+const StyledSection = styled.section`
+  
+`;
+
+export function TranslateBox() {
+  return (
+    <StyledSection>
+      <TranslateWidget />
+    </StyledSection>
+  )
 }
