@@ -10,18 +10,32 @@ const TranslateWidgetStyled = styled.div`
   justify-content: center;
 `;
 
+const TranslateTitleBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  margin-top: 100px;
+`
+
 const TranslateWidgetFormStyled = styled.form`
   width: 1000px;
   height: 100%;
   display: flex;
   flex-direction: column;
+
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    margin: 5%;
+  }
 `;
 
 const TranslateSettingBox = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 25px;
 `;
 
 const TranslateSettingTimeBox = styled.div`
@@ -33,21 +47,27 @@ const TranslateSettingTimeBox = styled.div`
     text-align: right;
     padding: 5px;
     font-size: 16px;
-    border: 1px solid #e5e5e5;
+    border: 1px solid #e1e1e1;
+  }
+
+  input:focus{
+    outline: none;
+    border: 1px solid #c8c8fa;
   }
 
   label{
-    border: 1px solid #e5e5e5;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border: 1px solid #e1e1e1;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
     background-color: #e5e5e5;
     padding: 5px 10px;
+    white-space: nowrap;
   }
 
   span{
-    border: 1px solid #e5e5e5;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border: 1px solid #e1e1e1;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
     background-color: #e5e5e5;
     padding: 5px 10px;
   }
@@ -58,7 +78,8 @@ const TranslateButtonBox = styled.div`
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 50px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 
   button {
     width: 100px;
@@ -113,7 +134,7 @@ export function TranslateWidget() {
   
   const translateCopy = () => {
     navigator.clipboard.writeText(translation);
-    toastCall("복사되었습니다");
+    toastCall("복사 성공");
   }
 
   const numberCheck = (time: string) => {
@@ -140,15 +161,44 @@ export function TranslateWidget() {
     translate();
   }
 
+  const downloadSrtFile = () => {
+
+    if(!translation){
+      alert("변환된 데이터가 존재하지 않습니다.");
+      return;
+    }
+
+    const blob = new Blob([translation], {
+      type: 'text/plain;charset=UTF-8',
+    });
+    const blobUrl = window.URL.createObjectURL(blob);
+   
+    const link = document.createElement('a');
+    link.href = blobUrl;
+    link.download = `nmixxfantube.srt`;
+    link.click();
+    link.remove();
+
+    toastCall("다운로드 성공");
+    window.URL.revokeObjectURL(blobUrl);
+  };
+
   const translate = async () => {
     const content = lyrics.split('\n')
     let result: string = ""
+    let emptyIdx = 0;
 
     content.map((value, index) => {
-      const idx: number = index + 1;
+      if(!value){
+        emptyIdx++;
+        return;
+      }
+      const idx: number = index + 1 - emptyIdx;
+      const nowIdx = index - emptyIdx;
+
       const first: string = idx.toString().concat("\n");
-      const view_time_origin = index * viewTime;
-      const view_time_next = index * viewTime + viewTime;
+      const view_time_origin = nowIdx * viewTime;
+      const view_time_next = nowIdx * viewTime + viewTime;
 
       const origin_hour = Math.floor(view_time_origin/3600);      
       const origin_mins = Math.floor((view_time_origin - origin_hour*3600)/60);
@@ -179,6 +229,9 @@ export function TranslateWidget() {
   return (
       <TranslateWidgetStyled>
         <TranslateWidgetFormStyled>
+          <TranslateTitleBox>
+            LYRICS
+          </TranslateTitleBox>
           <TranslateSettingBox>
             <TranslateSettingTimeBox>
               <label htmlFor="view_time">재생시간</label>
@@ -188,7 +241,6 @@ export function TranslateWidget() {
           </TranslateSettingBox>
           <TranslateButtonBox>
             <button style={{backgroundColor: '#0d6efd'}} type="button" onClick={translateRun}>변환</button>
-            <button style={{backgroundColor: '#198754'}} type="button" onClick={translateCopy}>복사</button>
             <button style={{backgroundColor: '#dc3545'}} type="button" onClick={resetTextarea}>초기화</button>
           </TranslateButtonBox>
           <TranslateTextareaBox>
@@ -196,6 +248,10 @@ export function TranslateWidget() {
             <span>▼</span>
             <textarea readOnly value={translation} />
           </TranslateTextareaBox>
+          <TranslateButtonBox>
+            <button style={{backgroundColor: '#198754'}} type="button" onClick={translateCopy}>복사</button>
+            <button style={{backgroundColor: '#919191'}} type="button" onClick={downloadSrtFile}>다운로드</button>
+          </TranslateButtonBox>
         </TranslateWidgetFormStyled>
       </TranslateWidgetStyled>
   )

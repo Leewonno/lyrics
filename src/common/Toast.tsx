@@ -5,7 +5,7 @@ import { noneVisible } from '../redux/toast';
 
 const boxFade = keyframes`
   0% {
-    transform: translateY(80px);
+    transform: translateY(100px);
     opacity: 0;
   }
   25% {
@@ -40,8 +40,13 @@ const StyledToastBox = styled.div`
     align-items: center;
     border: 1px solid #c3c3c3;
     border-radius: 50px;
-    background-color: #2cabff;
+    background-color: #909090;
     color: #fff;
+
+    img{
+      width: 25px;
+      margin-right: 10px;
+    }
   }
 `;
 
@@ -70,6 +75,7 @@ export const Toast: React.FC = () => {
   return (
     <StyledToastBox style={status ? displayFlex : displayNone}>
       <div>
+        <img src={'image/check.png'} />
         {message}
       </div>    
     </StyledToastBox>
