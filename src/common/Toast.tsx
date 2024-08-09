@@ -75,7 +75,7 @@ export const Toast: React.FC = () => {
   return (
     <StyledToastBox style={status ? displayFlex : displayNone}>
       <div>
-        <img src={'image/check.png'} />
+        <img src={'../image/check.png'} />
         {message}
       </div>    
     </StyledToastBox>
