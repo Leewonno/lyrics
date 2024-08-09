@@ -24,10 +24,10 @@ export function HeaderLogoLink() {
   return (
     <HeaderLogoLinkBoxStyled>
         <HeaderLogoLinkStyled href="https://www.youtube.com/@nmixxfantube" title="YT Channel" target="_blank">
-            <img src="image/yt.png" />
+            <img src="../image/yt.png" />
         </HeaderLogoLinkStyled>
         <HeaderLogoLinkStyled href="https://www.instagram.com/nmixxfantube/" title="Instagram Channel" target="_blank">
-            <img src="image/insta.webp" />
+            <img src="../image/insta.webp" />
         </HeaderLogoLinkStyled>
     </HeaderLogoLinkBoxStyled>
     
