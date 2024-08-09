@@ -11,7 +11,7 @@ export function TranslateWidget() {
 
   const [message, setMessage] = useState<string>("")
 
-  const toast = useSelector((state) => state.visible.value)
+  const toast = useSelector((state:any) => state.visible.value)
   const dispatch = useDispatch();
   
 
