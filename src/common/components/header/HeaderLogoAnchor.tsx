@@ -9,6 +9,11 @@ const HeaderLogoAnchorStyled = styled.a`
   cursor: pointer;
   user-select: none;
   letter-spacing: -1px;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export function HeaderLogoAnchor() {
