@@ -19,6 +19,7 @@ const TranslateTitleBox = styled.div`
   font-weight: bold;
   margin-bottom: 50px;
   margin-top: 100px;
+  user-select: none;
 `
 
 const TranslateWidgetFormStyled = styled.form`
