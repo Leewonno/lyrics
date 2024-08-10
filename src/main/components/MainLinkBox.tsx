@@ -88,7 +88,7 @@ export function MainLinkBox() {
           <a href="/translate"><img src="../image/description.png" />자막변환</a>
         </div>
         <MainLinkBoxExternalStyled>
-          <a href="https://www.youtube.com/@NMIXXOfficial" target="_blank">NMIXX_Ofiicial<img src="../image/yt.png"/></a>
+          <a href="https://www.youtube.com/@NMIXXOfficial" target="_blank">NMIXX_Official<img src="../image/yt.png"/></a>
           <a href="https://x.com/NMIXX_official" target="_blank">NMIXX_Official<img src="../image/x.svg"/></a>
         </MainLinkBoxExternalStyled>
       </MainLinkBoxingStyled>
