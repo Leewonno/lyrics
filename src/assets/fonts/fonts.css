@@ -28,6 +28,13 @@
 
 @font-face {
     font-family: "NotoSansKR";
+    font-style: bold;
+    font-weight: 900;
+    src: url("./NotoSansKR-ExtraBold") format("truetype");
+}
+
+@font-face {
+    font-family: "NotoSansKR";
     font-style: normal;
     font-weight: lighter;
     src: url("./NotoSansKR-Thin.ttf") format("truetype");

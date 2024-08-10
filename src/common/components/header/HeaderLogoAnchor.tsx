@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const HeaderLogoAnchorStyled = styled.a`
   width: auto;
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 21px;
+  font-weight: 900;
   text-decoration: none;
   color: #000;
   cursor: pointer;
@@ -12,14 +12,14 @@ const HeaderLogoAnchorStyled = styled.a`
   transition: all 0.3s;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 `;
 
 export function HeaderLogoAnchor() {
   return (
     <HeaderLogoAnchorStyled href="/" title="엔믹스팬튜브">
-      NMIXXFanTube
+      LIKE NMIXX
     </HeaderLogoAnchorStyled>
   )
 }
