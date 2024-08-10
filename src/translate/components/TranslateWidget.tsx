@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useDispatch } from 'react-redux'
 import { visible, setMessage } from '../../redux/toast';
 import styled from "styled-components";
+import { TranslateExampleBox } from "./TranslateExampleBox";
 
 const TranslateWidgetStyled = styled.div`
   width: 100%;
@@ -18,6 +19,7 @@ const TranslateTitleBox = styled.div`
   font-weight: bold;
   margin-bottom: 50px;
   margin-top: 100px;
+  user-select: none;
 `
 
 const TranslateWidgetFormStyled = styled.form`
@@ -35,7 +37,7 @@ const TranslateWidgetFormStyled = styled.form`
 const TranslateSettingBox = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
 `;
 
 const TranslateSettingTimeBox = styled.div`
@@ -44,9 +46,10 @@ const TranslateSettingTimeBox = styled.div`
   align-items: center;
 
   input{
+    width: 100px;
     text-align: right;
     padding: 5px;
-    font-size: 16px;
+    font-size: 14px;
     border: 1px solid #e1e1e1;
   }
 
@@ -60,7 +63,8 @@ const TranslateSettingTimeBox = styled.div`
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
     background-color: #e5e5e5;
-    padding: 5px 10px;
+    padding: 5px 8px;
+    font-size: 14px;
     white-space: nowrap;
   }
 
@@ -70,16 +74,17 @@ const TranslateSettingTimeBox = styled.div`
     border-bottom-right-radius: 6px;
     background-color: #e5e5e5;
     padding: 5px 10px;
+    font-size: 14px;
   }
 `
 
 const TranslateButtonBox = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   gap: 10px;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 
   button {
     width: 100px;
@@ -116,6 +121,10 @@ const TranslateTextareaBox = styled.div`
 
   textarea:focus{
     outline: 3px solid #c8c8fa;
+  }
+
+  span{
+    color: #9b9b9b;
   }
 `;
 
@@ -232,6 +241,7 @@ export function TranslateWidget() {
           <TranslateTitleBox>
             LYRICS
           </TranslateTitleBox>
+          <TranslateExampleBox />
           <TranslateSettingBox>
             <TranslateSettingTimeBox>
               <label htmlFor="view_time">재생시간</label>
