@@ -158,14 +158,14 @@ export function TranslateWidget() {
     setViewTime(Number(time))
   }
 
-  const lineCheck = (line: string) => {
-    if (Number(line) < 1 && line.length != 0) {
+  const lineCheck = (lineStr: string) => {
+    if (Number(lineStr) < 1 && lineStr.length != 0) {
       alert("라인수는 1이상 입력해야합니다!");
       setLine(1);
       return;
     }
 
-    setLine(Number(line))
+    setLine(Number(lineStr))
   }
 
   const resetTextarea = () => {
@@ -205,9 +205,32 @@ export function TranslateWidget() {
   };
 
   const translate = async () => {
-    const content = lyrics.split('\n')
+    let content = lyrics.split('\n')
     let result: string = ""
     let emptyIdx = 0;
+
+    if (line>1){
+      let temp = [];
+
+      for(let i = 0; i<content.length; i+=line){
+        let str = "";
+        for(let j = 0; j<line; j++){
+          if(content[i+j] == 'undefiend'){
+            return;
+          }
+          if(content[i + j].length > 0){
+            if (j===(line-1)){
+              str += content[i + j];
+            }else{
+              str += (content[i + j] + '\n');
+            }
+          }
+        }
+        temp.push(str);
+      }
+
+      content = temp;
+    }
 
     content.map((value, index) => {
       if(!value){
@@ -260,7 +283,7 @@ export function TranslateWidget() {
               <input id="view_time" type="number" min={1} value={viewTime} onChange={(e) => numberCheck(e.target.value)} />
               <span>초</span>
               <label htmlFor="view_time">라인</label>
-              <input id="view_time" type="number" min={1} value={viewTime} onChange={(e) => lineCheck(e.target.value)} />
+              <input id="view_time" type="number" min={1} value={line} onChange={(e) => lineCheck(e.target.value)} />
               <span>줄</span>
             </TranslateSettingTimeBox>
           </TranslateSettingBox>
