@@ -75,6 +75,7 @@ const TranslateSettingTimeBox = styled.div`
     background-color: #e5e5e5;
     padding: 5px 10px;
     font-size: 14px;
+    margin-right: 7px;
   }
 `
 
@@ -130,9 +131,10 @@ const TranslateTextareaBox = styled.div`
 
 export function TranslateWidget() {
 
-  const [lyrics, setLyrics] = useState<string>("")
-  const [translation, setTranslation] = useState<string>("")
-  const [viewTime, setViewTime] = useState<number>(1)
+  const [lyrics, setLyrics] = useState<string>("");
+  const [translation, setTranslation] = useState<string>("");
+  const [viewTime, setViewTime] = useState<number>(1);
+  const [line, setLine] = useState<number>(1);
 
   const dispatch = useDispatch();
 
@@ -154,6 +156,16 @@ export function TranslateWidget() {
     }
 
     setViewTime(Number(time))
+  }
+
+  const lineCheck = (line: string) => {
+    if (Number(line) < 1 && line.length != 0) {
+      alert("라인수는 1이상 입력해야합니다!");
+      setLine(1);
+      return;
+    }
+
+    setLine(Number(line))
   }
 
   const resetTextarea = () => {
@@ -247,6 +259,9 @@ export function TranslateWidget() {
               <label htmlFor="view_time">재생시간</label>
               <input id="view_time" type="number" min={1} value={viewTime} onChange={(e) => numberCheck(e.target.value)} />
               <span>초</span>
+              <label htmlFor="view_time">라인</label>
+              <input id="view_time" type="number" min={1} value={viewTime} onChange={(e) => lineCheck(e.target.value)} />
+              <span>줄</span>
             </TranslateSettingTimeBox>
           </TranslateSettingBox>
           <TranslateButtonBox>
