@@ -82,7 +82,7 @@ const MainLinkBoxExternalStyled = styled.div`
 export function MainLinkBox() {
   return (
     <MainLinkBoxStyled>
-      <iframe src="https://www.youtube.com/embed/7UecFm_bSTU" title="NMIXX “DASH” M/V" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+      <iframe src="https://www.youtube.com/embed/_Q8Jskeps9w" title="NMIXX(엔믹스) “별별별 (See that?)” M/V" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
       <MainLinkBoxingStyled>
         <div>
           <a href="/translate"><img src="../image/description.png" />자막변환</a>
