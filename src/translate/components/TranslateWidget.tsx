@@ -215,10 +215,11 @@ export function TranslateWidget() {
       for(let i = 0; i<content.length; i+=line){
         let str = "";
         for(let j = 0; j<line; j++){
-          if(content[i+j] == 'undefiend'){
+          if(content[i+j] == undefined){
             return;
           }
-          if(content[i + j].length > 0){
+          console.log(content[i+j])
+          if(content[i+j].length > 0){
             if (j===(line-1)){
               str += content[i + j];
             }else{
