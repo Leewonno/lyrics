@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const FooterElementStyled = styled.footer`
+const Widget = styled.footer`
   width: 100%;
   height: 100px;
   margin-top: 100px;
@@ -15,8 +15,8 @@ const FooterElementStyled = styled.footer`
 
 export function Footer() {
   return (
-    <FooterElementStyled>
-      NMIXXFanTube
-    </FooterElementStyled>
+    <Widget>
+      LIKE NMIXX
+    </Widget>
   )
 }

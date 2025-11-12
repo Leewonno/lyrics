@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
-const HeaderLogoAnchorStyled = styled.a`
+const Component = styled.a`
   width: auto;
-  font-size: 21px;
+  font-size: 25px;
   font-weight: 900;
   text-decoration: none;
   color: #000;
   cursor: pointer;
   user-select: none;
-  letter-spacing: -1px;
   transition: all 0.3s;
 
   &:hover {
@@ -16,10 +15,10 @@ const HeaderLogoAnchorStyled = styled.a`
   }
 `;
 
-export function HeaderLogoAnchor() {
+export function HeaderLogo() {
   return (
-    <HeaderLogoAnchorStyled href="/" title="엔믹스팬튜브">
-      LIKE NMIXX
-    </HeaderLogoAnchorStyled>
+    <Component href="/" title="LYRICS">
+      LYRICS
+    </Component>
   )
 }

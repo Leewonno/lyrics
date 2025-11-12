@@ -3,7 +3,6 @@ import { doc, increment, setDoc } from "firebase/firestore";
 import { db } from "../firebase"
 
 import { TranslateBox } from "./components/TranslateBox";
-import TranslateStyle from "./css/TranslateStyle";
 import { getLocalStorage, setLocalStorageTimer } from "../localstorage";
 
 export function Translate() {
@@ -18,7 +17,7 @@ export function Translate() {
       const time = year + month + day;
       const docName = + time + "_" + page;
 
-      if (getLocalStorage(page)===time){
+      if (getLocalStorage(page) === time) {
         return;
       }
 
@@ -34,7 +33,6 @@ export function Translate() {
 
   return (
     <>
-      <TranslateStyle />
       <TranslateBox />
     </>
   )

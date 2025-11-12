@@ -1,19 +1,19 @@
 import styled from "styled-components";
-import { HeaderLogoBox } from "./components/header/HeaderLogoBox";
+import { HeaderWrapper } from "./components/header/HeaderWrapper";
 
-const HeaderElementStyled = styled.header`
+const Widget = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 75px;
-  box-shadow: 0px -9px 15px 1px #000;
+  height: 60px;
+  box-shadow: 0px -9px 15px 1px #0000005b;
   background-color: #fff;
 `;
 
 export function Header() {
   return (
-    <HeaderElementStyled>
-      <HeaderLogoBox />
-    </HeaderElementStyled>
+    <Widget>
+      <HeaderWrapper />
+    </Widget>
   )
 }
