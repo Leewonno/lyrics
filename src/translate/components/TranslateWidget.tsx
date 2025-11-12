@@ -2,27 +2,27 @@ import { useState } from "react"
 import { useDispatch } from 'react-redux'
 import { visible, setMessage } from '../../redux/toast';
 import styled from "styled-components";
-import { TranslateExampleBox } from "./TranslateExampleBox";
+import { TranslateExample } from "./TranslateExample";
 
-const TranslateWidgetStyled = styled.div`
+const Widget = styled.div`
   width: 100%;
   height: auto;
   display: flex;
   justify-content: center;
+  margin-top: 100px;
 `;
 
-const TranslateTitleBox = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 50px;
-  margin-top: 100px;
-  user-select: none;
-`
+// const Title = styled.div`
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+//   font-size: 30px;
+//   font-weight: 600;
+//   margin-bottom: 50px;
+//   margin-top: 100px;
+// `
 
-const TranslateWidgetFormStyled = styled.form`
+const WidgetForm = styled.form`
   width: 1000px;
   height: 100%;
   display: flex;
@@ -34,13 +34,12 @@ const TranslateWidgetFormStyled = styled.form`
   }
 `;
 
-const TranslateSettingBox = styled.div`
+const SettingBox = styled.div`
   width: 100%;
   display: flex;
-  /* justify-content: center; */
 `;
 
-const TranslateSettingTimeBox = styled.div`
+const TimeBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,10 +77,9 @@ const TranslateSettingTimeBox = styled.div`
   }
 `
 
-const TranslateButtonBox = styled.div`
+const ButtonBox = styled.div`
   width: 100%;
   display: flex;
-  /* justify-content: center; */
   gap: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -102,7 +100,7 @@ const TranslateButtonBox = styled.div`
   }
 `;
 
-const TranslateTextareaBox = styled.div`
+const InputBox = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -136,11 +134,11 @@ export function TranslateWidget() {
 
   const dispatch = useDispatch();
 
-  const toastCall = (msg: string)=>{
+  const toastCall = (msg: string) => {
     dispatch(setMessage(msg))
     dispatch(visible())
   }
-  
+
   const translateCopy = () => {
     navigator.clipboard.writeText(translation);
     toastCall("복사 성공");
@@ -172,7 +170,7 @@ export function TranslateWidget() {
 
   const downloadSrtFile = () => {
 
-    if(!translation){
+    if (!translation) {
       alert("변환된 데이터가 존재하지 않습니다.");
       return;
     }
@@ -181,7 +179,7 @@ export function TranslateWidget() {
       type: 'text/plain;charset=UTF-8',
     });
     const blobUrl = window.URL.createObjectURL(blob);
-   
+
     const link = document.createElement('a');
     link.href = blobUrl;
     link.download = `nmixxfantube.srt`;
@@ -198,7 +196,7 @@ export function TranslateWidget() {
     let emptyIdx = 0;
 
     content.map((value, index) => {
-      if(!value){
+      if (!value) {
         emptyIdx++;
         return;
       }
@@ -209,17 +207,17 @@ export function TranslateWidget() {
       const view_time_origin = nowIdx * viewTime;
       const view_time_next = nowIdx * viewTime + viewTime;
 
-      const origin_hour = Math.floor(view_time_origin/3600);      
-      const origin_mins = Math.floor((view_time_origin - origin_hour*3600)/60);
-      const origin_secs = view_time_origin - origin_hour*3600 - origin_mins*60;
+      const origin_hour = Math.floor(view_time_origin / 3600);
+      const origin_mins = Math.floor((view_time_origin - origin_hour * 3600) / 60);
+      const origin_secs = view_time_origin - origin_hour * 3600 - origin_mins * 60;
 
       const origin_hour_str = String(origin_hour).padStart(2, '0');
       const origin_mins_str = String(origin_mins).padStart(2, '0');
       const origin_secs_str = String(origin_secs).padStart(2, '0');
 
-      const next_hour = Math.floor(view_time_next/3600)
-      const next_mins = Math.floor((view_time_next - next_hour*3600)/60)
-      const next_secs = view_time_next - next_hour*3600 - next_mins*60
+      const next_hour = Math.floor(view_time_next / 3600)
+      const next_mins = Math.floor((view_time_next - next_hour * 3600) / 60)
+      const next_secs = view_time_next - next_hour * 3600 - next_mins * 60
 
       const next_hour_str = String(next_hour).padStart(2, '0');
       const next_mins_str = String(next_mins).padStart(2, '0');
@@ -236,33 +234,33 @@ export function TranslateWidget() {
   }
 
   return (
-      <TranslateWidgetStyled>
-        <TranslateWidgetFormStyled>
-          <TranslateTitleBox>
-            LYRICS
-          </TranslateTitleBox>
-          <TranslateExampleBox />
-          <TranslateSettingBox>
-            <TranslateSettingTimeBox>
-              <label htmlFor="view_time">재생시간</label>
-              <input id="view_time" type="number" min={1} value={viewTime} onChange={(e) => numberCheck(e.target.value)} />
-              <span>초</span>
-            </TranslateSettingTimeBox>
-          </TranslateSettingBox>
-          <TranslateButtonBox>
-            <button style={{backgroundColor: '#0d6efd'}} type="button" onClick={translateRun}>변환</button>
-            <button style={{backgroundColor: '#dc3545'}} type="button" onClick={resetTextarea}>초기화</button>
-          </TranslateButtonBox>
-          <TranslateTextareaBox>
-            <textarea placeholder="가사를 입력하세요" value={lyrics} onChange={(e) => setLyrics(e.target.value)} />
-            <span>▼</span>
-            <textarea readOnly value={translation} />
-          </TranslateTextareaBox>
-          <TranslateButtonBox>
-            <button style={{backgroundColor: '#198754'}} type="button" onClick={translateCopy}>복사</button>
-            <button style={{backgroundColor: '#919191'}} type="button" onClick={downloadSrtFile}>다운로드</button>
-          </TranslateButtonBox>
-        </TranslateWidgetFormStyled>
-      </TranslateWidgetStyled>
+    <Widget>
+      <WidgetForm>
+        {/* <Title>
+            가사 변환
+          </Title> */}
+        <TranslateExample />
+        <SettingBox>
+          <TimeBox>
+            <label htmlFor="view_time">재생시간</label>
+            <input id="view_time" type="number" min={1} value={viewTime} onChange={(e) => numberCheck(e.target.value)} />
+            <span>초</span>
+          </TimeBox>
+        </SettingBox>
+        <ButtonBox>
+          <button style={{ backgroundColor: '#0d6efd' }} type="button" onClick={translateRun}>변환</button>
+          <button style={{ backgroundColor: '#dc3545' }} type="button" onClick={resetTextarea}>초기화</button>
+        </ButtonBox>
+        <InputBox>
+          <textarea placeholder="가사를 입력하세요" value={lyrics} onChange={(e) => setLyrics(e.target.value)} />
+          <span>▼</span>
+          <textarea readOnly value={translation} />
+        </InputBox>
+        <ButtonBox>
+          <button style={{ backgroundColor: '#198754' }} type="button" onClick={translateCopy}>복사</button>
+          <button style={{ backgroundColor: '#919191' }} type="button" onClick={downloadSrtFile}>다운로드</button>
+        </ButtonBox>
+      </WidgetForm>
+    </Widget>
   )
 }

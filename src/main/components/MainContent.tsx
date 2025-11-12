@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const MainLinkBoxStyled = styled.div`
+const Box = styled.div`
   width: 100%;
   margin-top: 150px;
   min-height: 100vh;
@@ -60,7 +60,7 @@ const MainLinkBoxStyled = styled.div`
   }
 `;
 
-const MainLinkBoxingStyled = styled.div`
+const LinkBox = styled.div`
   width: 960px;
   margin-top: 50px;
   display: flex;
@@ -73,25 +73,28 @@ const MainLinkBoxingStyled = styled.div`
   }
 `
 
-const MainLinkBoxExternalStyled = styled.div`
+const PageLinkBox = styled.div`
+`
+
+const OfficialLinkBox = styled.div`
   display: flex;
   flex-direction: row;
   gap: 15px;
 `
 
-export function MainLinkBox() {
+export function MainContent() {
   return (
-    <MainLinkBoxStyled>
-      <iframe src="https://www.youtube.com/embed/_Q8Jskeps9w" title="NMIXX(엔믹스) “별별별 (See that?)” M/V" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-      <MainLinkBoxingStyled>
-        <div>
+    <Box>
+      <iframe src="https://www.youtube.com/embed/EmeW6li6bbo" title="NMIXX(엔믹스) “Blue Valentine” M/V" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+      <LinkBox>
+        <PageLinkBox>
           <a href="/translate"><img src="../image/description.png" />자막변환</a>
-        </div>
-        <MainLinkBoxExternalStyled>
-          <a href="https://www.youtube.com/@NMIXXOfficial" target="_blank">NMIXX_Official<img src="../image/yt.png"/></a>
-          <a href="https://x.com/NMIXX_official" target="_blank">NMIXX_Official<img src="../image/x.svg"/></a>
-        </MainLinkBoxExternalStyled>
-      </MainLinkBoxingStyled>
-    </MainLinkBoxStyled>
+        </PageLinkBox>
+        <OfficialLinkBox>
+          <a href="https://www.youtube.com/@NMIXXOfficial" target="_blank">NMIXX_Official<img src="../image/yt.png" /></a>
+          <a href="https://x.com/NMIXX_official" target="_blank">NMIXX_Official<img src="../image/x.svg" /></a>
+        </OfficialLinkBox>
+      </LinkBox>
+    </Box>
   )
 }

@@ -1,11 +1,9 @@
 import { useEffect } from "react";
-import { MainBox } from "./components/MainBox";
 import MainStyle from "./css/MainStyle";
 import { doc, increment, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { getLocalStorage, setLocalStorageTimer } from "../localstorage";
-// import { initializeApp } from "firebase/app";
-// import { getFirestore } from "firebase/firestore";
+import { MainSection } from "./components/MainSection";
 
 export function Main() {
 
@@ -20,7 +18,7 @@ export function Main() {
       const time = year + month + day;
       const docName = + time + "_" + page;
 
-      if (getLocalStorage(page)===time){
+      if (getLocalStorage(page) === time) {
         return;
       }
 
@@ -36,7 +34,7 @@ export function Main() {
   return (
     <>
       <MainStyle />
-      <MainBox />
+      <MainSection />
     </>
   )
 }

@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styled, {keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { noneVisible } from '../redux/toast';
 
-const boxFade = keyframes`
+const Fade = keyframes`
   0% {
     transform: translateY(100px);
     opacity: 0;
@@ -23,32 +23,32 @@ const boxFade = keyframes`
   }
 `
 
-const StyledToastBox = styled.div`
+const Widget = styled.div`
   width: 100%;
   position: fixed;
   bottom: 50%;
   display: none;
   justify-content: center;
   align-items: center;
-  animation: ${boxFade} 1.5s infinite linear alternate;
-
-  div{
-    font-size: 16px;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #c3c3c3;
-    border-radius: 50px;
-    background-color: #909090;
-    color: #fff;
-
-    img{
-      width: 25px;
-      margin-right: 10px;
-    }
-  }
+  animation: ${Fade} 1.5s infinite linear alternate;
 `;
+
+const Content = styled.div`
+  font-size: 16px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #c3c3c3;
+  border-radius: 50px;
+  background-color: #909090;
+  color: #fff;
+`
+
+const Image = styled.img`
+  width: 25px;
+  margin-right: 10px;
+`
 
 export const Toast: React.FC = () => {
 
@@ -73,11 +73,11 @@ export const Toast: React.FC = () => {
   }, [status])
 
   return (
-    <StyledToastBox style={status ? displayFlex : displayNone}>
-      <div>
-        <img src={'../image/check.png'} />
+    <Widget style={status ? displayFlex : displayNone}>
+      <Content>
+        <Image src={'../image/check.png'} />
         {message}
-      </div>    
-    </StyledToastBox>
+      </Content>
+    </Widget>
   )
 }
