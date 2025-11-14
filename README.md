@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/21f442d3-8d1a-4b4d-b0e0-396995194c4a)
+
 # 가사 자막 입력 도우미, LYRICS
 
 ## 📋 프로젝트 개요
