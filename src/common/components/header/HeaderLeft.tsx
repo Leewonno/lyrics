@@ -57,7 +57,7 @@ export function HeaderLeft() {
       <MenuContainer>
         <Menu href="/" title="member">멤버</Menu>
         <Menu href="/" title="song">노래</Menu>
-        <Menu href="/translate" title="translate">변환</Menu>
+        <Menu href="/translate" title="translate">자막변환</Menu>
       </MenuContainer>
     </Component>
   )
