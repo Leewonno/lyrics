@@ -67,7 +67,7 @@ export default function MainExplain() {
       <Wrapper>
         <Text>JYP엔터테인먼트 걸그룹 <Bold>NMIXX</Bold> 는</Text>
         <Text>NOW, NEW, NEXT, 미지수 N을 뜻하는 문자 <Bold>N</Bold>과 조합, 다양성을 상징하는 단어 <Bold>MIX</Bold>의 합성어로</Text>
-        <Text><Bold>'새로운 시대를 책임질 최상의 조합'</Bold> 이라는 의미를 갖고 있다.</Text>
+        <Text><Bold>'새로운 시대를 책임질 최상의 조합'</Bold> 이라는 의미를 갖고 있습니다.</Text>
         <WordBox>
           <Word>NOW</Word>
           <Word>NEW</Word>
