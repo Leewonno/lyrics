@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import MainStyle from "./css/MainStyle";
 import { doc, increment, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { getLocalStorage, setLocalStorageTimer } from "../localstorage";
@@ -33,7 +32,6 @@ export function Main() {
 
   return (
     <>
-      <MainStyle />
       <MainSection />
     </>
   )

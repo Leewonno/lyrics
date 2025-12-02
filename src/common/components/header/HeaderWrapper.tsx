@@ -1,17 +1,20 @@
 import styled from "styled-components";
-import { HeaderLogo } from "./HeaderLogo";
+import { HeaderLeft } from "./HeaderLeft";
+import { HeaderRight } from "./HeaderRight";
 
 const Compoent = styled.div`
   display: flex;
-  height: 100%;
+  width: 960px;
   align-items: center;
-  padding: 20px;
+  justify-content: space-between;
+  padding: 20px 0px;
 `;
 
 export function HeaderWrapper() {
   return (
     <Compoent>
-      <HeaderLogo />
+      <HeaderLeft />
+      <HeaderRight />
     </Compoent>
   )
 }

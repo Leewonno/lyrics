@@ -4,19 +4,25 @@ const Widget = styled.footer`
   width: 100%;
   height: 100px;
   margin-top: 100px;
-  background-color: #000;
-  position: relative;
-  bottom: 0;
-  color: #fff;
-  padding-top: 20px;
+  background-color: #202020;
   display: flex;
   justify-content: center;
+  position: relative;
+  bottom: 0;
+  padding-top: 20px;
 `;
+
+const Copyright = styled.div`
+  font-size: 0.9rem;
+  color: #fff;
+`
 
 export function Footer() {
   return (
     <Widget>
-      LIKE NMIXX
+      <Copyright>
+        ⓒ 2025 NMIXXFanPage. All rights reserved.
+      </Copyright>
     </Widget>
   )
 }
