@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import MainSwiper from "./MainSwiper";
 
 const Box = styled.div`
-  width: 100%;
+  width: 960px;
   margin-top: 150px;
   min-height: 100vh;
   display: flex;
@@ -61,7 +62,7 @@ const Box = styled.div`
 `;
 
 const LinkBox = styled.div`
-  width: 960px;
+  width: 100%;
   margin-top: 50px;
   display: flex;
   flex-direction: column;
@@ -86,7 +87,8 @@ export function MainContent() {
   return (
     <Box>
       {/* Todo : Swiper 적용해서 슬라이드로 뮤비 넘겨보기 */}
-      <iframe src="https://www.youtube.com/embed/EmeW6li6bbo" title="NMIXX(엔믹스) “Blue Valentine” M/V" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+      <MainSwiper />
+      
       <LinkBox>
         <PageLinkBox>
           <a href="/translate"><img src="../image/description.png" />자막변환</a>

@@ -16,7 +16,7 @@ const Widget = styled.footer`
 export function Footer() {
   return (
     <Widget>
-      LIKE NMIXX
+      ⓒ JYP Entertainment. All rights reserved.
     </Widget>
   )
 }
