@@ -8,7 +8,7 @@ import 'swiper/css/effect-cards';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  width: 100%;
+  width: 960px;
   position: relative;
 
   .swiper-button-next,
@@ -35,7 +35,7 @@ const Container = styled.div`
   }
 
   .swiper-button-prev {
-    transform: rotate(180deg);
+    transform: rotate(180deg) translateY(50%);
     left: -1rem;
     svg {
       width: 1.5rem;
@@ -52,12 +52,12 @@ export default function MainSwiper() {
         grabCursor={false}
         modules={[EffectCards, Navigation]}
         cardsEffect={{
-          perSlideOffset: 6, // 카드 겹침 정도
+          perSlideOffset: 8, // 카드 겹침 정도
+          perSlideRotate: 0,
           slideShadows: false, // 카드 그림자
         }}
         navigation={true}
         loop={true}
-        className="MV"
       >
         <SwiperSlide>
           <iframe src="https://www.youtube.com/embed/EmeW6li6bbo" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
