@@ -7,7 +7,10 @@ const Widget = styled.header`
   width: 100%;
   height: 60px;
   box-shadow: 0px -9px 15px 1px #0000005b;
-  background-color: #fff;
+  background-color: #ffffffa7;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
 `;
 
 export function Header() {
