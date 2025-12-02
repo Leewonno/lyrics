@@ -34,11 +34,12 @@ const MenuContainer = styled.div`
 const Menu = styled.a`
   text-decoration: none;
   color: #000;
-  /* transition: all 0.3s; */
+  font-weight: 400;
+  transition: font-weight 0.3s;
 
-  /* &:hover { */
-    /* font-weight: 600; */
-  /* } */
+  &:hover {
+    font-weight: 600;
+  }
 `
 
 // const LogoImage = styled.img`
