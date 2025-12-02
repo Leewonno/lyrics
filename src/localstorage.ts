@@ -1,15 +1,15 @@
 const setLocalStorageTimer = (key: string, value: string) => {
-    let item = value;
+	let item = value;
 
-    localStorage.setItem(key, JSON.stringify(item));
+	localStorage.setItem(key, JSON.stringify(item));
 };
 
 const getLocalStorage = (key: string) => {
-    let item = localStorage.getItem(key);
-    if (item === null) return null;
+	let item = localStorage.getItem(key);
+	if (item === null) return null;
 
-    item = JSON.parse(item);
-    return item;
+	item = JSON.parse(item);
+	return item;
 };
 
-export {setLocalStorageTimer, getLocalStorage}
+export { setLocalStorageTimer, getLocalStorage }
