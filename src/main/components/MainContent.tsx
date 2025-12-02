@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import MainSwiper from "./MainSwiper";
 import MainExplain from "./MainExplain";
+import MainMember from "./MainMember";
 
 const Box = styled.div`
   width: 100%;
@@ -58,6 +59,8 @@ export function MainContent() {
       <MainSwiper />
       {/* NMIXX 소개 */}
       <MainExplain />
+      {/* 멤버 */}
+      <MainMember />
     </Box>
   )
 }
