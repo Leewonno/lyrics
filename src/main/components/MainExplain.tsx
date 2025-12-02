@@ -1,6 +1,9 @@
 import styled from 'styled-components';
+import { motion } from "framer-motion";
+import { customChildVariants } from '../../motion/animation';
+import useObserver from '../../motion/useObserver';
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   width: 100%;
   padding: 50px 0px;
   display: flex;
@@ -57,8 +60,10 @@ const Word = styled.div`
 `
 
 export default function MainExplain() {
+  const { ref, animation } = useObserver();
+
   return (
-    <Container>
+    <Container ref={ref} animate={animation} variants={customChildVariants}>
       <Wrapper>
         <Text>JYP엔터테인먼트 걸그룹 <Bold>NMIXX</Bold> 는</Text>
         <Text>NOW, NEW, NEXT, 미지수 N을 뜻하는 문자 <Bold>N</Bold>과 조합, 다양성을 상징하는 단어 <Bold>MIX</Bold>의 합성어로</Text>
