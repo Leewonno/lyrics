@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const Component = styled.a`
   width: auto;
-  font-size: 25px;
-  font-weight: 900;
+  font-size: 1.5rem;
+  font-weight: 600;
   text-decoration: none;
   color: #000;
   cursor: pointer;

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { visible, setMessage } from '../../redux/toast';
 import styled from "styled-components";
 import { TranslateExample } from "./TranslateExample";
+// import callGPT from "../../common/components/chatgpt/lib/callGPT";
 
 const Widget = styled.div`
   width: 100%;
@@ -232,6 +233,13 @@ export function TranslateWidget() {
     setTranslation(result);
     toastCall("변환 성공");
   }
+
+  // useEffect(() => {
+  //   const test = async ()=>{
+  //     await callGPT()
+  //   }
+  //   test()
+  // }, [])
 
   return (
     <Widget>
