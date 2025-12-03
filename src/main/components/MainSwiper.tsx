@@ -6,6 +6,7 @@ import { EffectCards, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 import styled from 'styled-components';
+import { media } from '../../lib/media';
 
 const Container = styled.div`
   width: 960px;
@@ -24,24 +25,33 @@ const Container = styled.div`
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-  }
-
-  .swiper-button-next {
-    right: -1rem;
     svg {
       width: 1.5rem;
       height: 1.5rem;
     }
+  }
+
+  .swiper-button-next {
+    right: -1rem;
   }
 
   .swiper-button-prev {
     transform: rotate(180deg) translateY(50%);
     left: -1rem;
-    svg {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
   }
+
+  ${media.phone`
+    width: 90%;
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      padding: 0.7rem;
+      svg {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+  `}
 `
 
 export default function MainSwiper() {

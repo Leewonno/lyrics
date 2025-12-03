@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { HeaderLeft } from "./HeaderLeft";
 import { HeaderRight } from "./HeaderRight";
+import { media } from "../../../lib/media";
 
 const Compoent = styled.div`
   display: flex;
@@ -8,6 +9,11 @@ const Compoent = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 20px 0px;
+
+  ${media.phone`
+    width: 100%;
+    padding: 20px;
+  `}
 `;
 
 export function HeaderWrapper() {

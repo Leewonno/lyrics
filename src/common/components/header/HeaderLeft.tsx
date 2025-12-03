@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../../lib/media";
 // import logo from "../../../assets/images/nmixx.svg"
 
 const Component = styled.div`
@@ -42,12 +43,11 @@ const Menu = styled.a`
   &:hover {
     font-weight: 600;
   }
-`
 
-// const LogoImage = styled.img`
-//   height: 37px;
-//   filter: brightness(0) saturate(100%) invert(0%);
-// `
+  ${media.phone`
+    display: none;
+  `}
+`
 
 export function HeaderLeft() {
   return (
