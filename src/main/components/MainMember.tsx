@@ -173,17 +173,6 @@ const DisplayLine = styled.div`
     animation: ripple 1.2s ease-out forwards;
     pointer-events: none;
   }
-
-  @keyframes ripple {
-    0% {
-      transform: translateY(-50%) scaleY(0.1);
-      opacity: 0.8;
-    }
-    100% {
-      transform: translateY(-50%) scaleY(1.8); /* 퍼져나가는 정도 */
-      opacity: 0;
-    }
-  }
 `
 
 const DisplayBirth = styled.div`
