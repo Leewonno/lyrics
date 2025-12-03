@@ -45,15 +45,6 @@ const Word = styled.div`
   cursor: pointer;
   font-weight: 600;
 
-  @keyframes wobble {
-    0%   { transform: rotate(0deg); }
-    20%  { transform: rotate(3deg); }
-    40%  { transform: rotate(-3deg); }
-    60%  { transform: rotate(2deg); }
-    80%  { transform: rotate(-2deg); }
-    100% { transform: rotate(0deg); }
-  }
-
   &:hover {
     animation: wobble 0.6s ease-in-out;
   }
