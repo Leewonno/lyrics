@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch } from 'react-redux'
-import { visible, setMessage } from '../../redux/toast';
+import { visible, setMessage } from '../../redux/features/toast/toast';
 import styled from "styled-components";
 import { TranslateExample } from "./TranslateExample";
 // import callGPT from "../../common/components/chatgpt/lib/callGPT";

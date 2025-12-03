@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled, { keyframes } from "styled-components";
-import { noneVisible } from '../redux/toast';
+import { noneVisible } from '../redux/features/toast/toast';
 
 const Fade = keyframes`
   0% {
@@ -52,8 +52,8 @@ const Image = styled.img`
 
 export const Toast: React.FC = () => {
 
-  const message = useSelector((state: any) => state.visible.message);
-  const status = useSelector((state: any) => state.visible.status);
+  const message = useSelector((state: any) => state.toast.message);
+  const status = useSelector((state: any) => state.toast.status);
   const dispatch = useDispatch();
 
   const displayNone = {
