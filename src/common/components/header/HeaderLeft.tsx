@@ -7,10 +7,13 @@ const Component = styled.div`
 `;
 
 const LogoContainer = styled.div`
+  position: relative;
   transition: all 0.3s;
+  letter-spacing: -0.1rem;
 
   &:hover {
     transform: scale(1.1);
+    letter-spacing: 0.1rem;
   }
 `
 
@@ -22,7 +25,6 @@ const Logo = styled.a`
   color: #000;
   cursor: pointer;
   user-select: none;
-  letter-spacing: -0.1rem;
 `
 
 const MenuContainer = styled.div`
