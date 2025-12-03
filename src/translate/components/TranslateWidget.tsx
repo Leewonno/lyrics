@@ -24,7 +24,7 @@ const Widget = styled.div`
 // `
 
 const WidgetForm = styled.form`
-  width: 1000px;
+  width: 960px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -136,61 +136,68 @@ export function TranslateWidget() {
   const dispatch = useDispatch();
 
   const toastCall = (msg: string) => {
-    dispatch(setMessage(msg))
-    dispatch(visible())
+    dispatch(setMessage(msg));
+    dispatch(visible());
   }
 
+  // ==================================================
+  // 결과 복사
   const translateCopy = () => {
     navigator.clipboard.writeText(translation);
     toastCall("복사 성공");
   }
 
+  // ==================================================
+  // 재생 시간 확인
   const numberCheck = (time: string) => {
     if (Number(time) < 1 && time.length != 0) {
-      alert("재생시간은 1이상 입력해야합니다!");
+      alert("재생 시간은 최소 1초 이상이어야 합니다.");
       setViewTime(1);
       return;
     }
-
     setViewTime(Number(time))
   }
 
+  // ==================================================
+  // 가사 입력창 초기화
   const resetTextarea = () => {
     setLyrics("")
     setTranslation("")
     toastCall("초기화 성공");
   }
 
+  // ==================================================
+  // 가사 입력 확인
   const translateRun = () => {
     if (!lyrics) {
-      alert("가사를 입력해 주세요!")
+      alert("가사를 입력해 주세요.")
       return;
     }
     translate();
   }
 
+  // ==================================================
+  // 파일 다운로드
   const downloadSrtFile = () => {
-
     if (!translation) {
       alert("변환된 데이터가 존재하지 않습니다.");
       return;
     }
-
     const blob = new Blob([translation], {
       type: 'text/plain;charset=UTF-8',
     });
     const blobUrl = window.URL.createObjectURL(blob);
-
     const link = document.createElement('a');
     link.href = blobUrl;
     link.download = `nmixxfantube.srt`;
     link.click();
     link.remove();
-
-    toastCall("다운로드 성공");
     window.URL.revokeObjectURL(blobUrl);
+    toastCall("다운로드 성공");
   };
 
+  // ==================================================
+  // 가사 변환
   const translate = async () => {
     const content = lyrics.split('\n')
     let result: string = ""
@@ -234,6 +241,8 @@ export function TranslateWidget() {
     toastCall("변환 성공");
   }
 
+  // ==================================================
+  // ChatGPT 연결
   // useEffect(() => {
   //   const test = async ()=>{
   //     await callGPT()

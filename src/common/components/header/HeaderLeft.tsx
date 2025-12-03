@@ -13,7 +13,7 @@ const LogoContainer = styled.div`
 
   &:hover {
     transform: scale(1.1);
-    letter-spacing: 0.1rem;
+    letter-spacing: 1px;
   }
 `
 
@@ -58,7 +58,7 @@ export function HeaderLeft() {
       </LogoContainer>
       <MenuContainer>
         <Menu href="/member" title="member">멤버</Menu>
-        <Menu href="/" title="song">노래</Menu>
+        <Menu href="/album" title="album">앨범</Menu>
         <Menu href="/translate" title="translate">자막변환</Menu>
       </MenuContainer>
     </Component>
