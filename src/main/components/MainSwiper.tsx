@@ -42,6 +42,7 @@ const Container = styled.div`
 
   ${media.phone`
     width: 90%;
+    overflow: hidden;
 
     .swiper-button-next,
     .swiper-button-prev {
@@ -50,6 +51,14 @@ const Container = styled.div`
         width: 1rem;
         height: 1rem;
       }
+    }
+
+    .swiper-button-next {
+      right: 1rem;
+    }
+
+    .swiper-button-prev {
+      left: 1rem;
     }
   `}
 `
