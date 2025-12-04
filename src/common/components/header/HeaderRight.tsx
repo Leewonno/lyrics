@@ -74,10 +74,10 @@ const MenuContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  background-color: #ffffffa7;
+  background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(5px);
   padding: 1rem;
-  border-radius: 20px;
+  border-radius: 1rem;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 `
 
