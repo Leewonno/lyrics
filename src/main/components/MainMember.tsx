@@ -16,6 +16,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 import { Scrollbar } from 'swiper/modules';
+import { media } from '../../lib/media';
+import { useEffect, useState } from 'react';
 
 const Container = styled.div`
   width: 960px;
@@ -36,12 +38,24 @@ const Container = styled.div`
     position: absolute;
     cursor: pointer;
   }
+
+  ${media.phone`
+    width: 100%;
+
+    .swiper {
+      padding: 1rem;
+    }
+  `}
 `
 
 const Wrapper = styled(motion.div)`
   width: 100%;
   display: flex;
   gap: 1rem;
+
+  ${media.phone`
+    font-size: 1.4rem;
+  `}
 `
 
 const Title = styled.div`
@@ -49,6 +63,10 @@ const Title = styled.div`
   text-align: center;
   font-weight: 600;
   font-size: 2rem;
+
+  ${media.phone`
+    font-size: 1.5rem;
+  `}
 `
 
 const Slide = styled(SwiperSlide)`
@@ -59,6 +77,23 @@ const Slide = styled(SwiperSlide)`
 
 export default function MainMember() {
   const { ref, animation } = useObserver();
+  const [slides, setSlides] = useState<number>(3.67);
+
+  const interpolate = (current: number) => {
+    if (current > 1100) return 3.67;
+    return current / 224;
+  };
+
+  useEffect(() => {
+    const updateSlides = () => {
+      const w = window.innerWidth;
+      const value = interpolate(w);
+      setSlides(value);
+    };
+    updateSlides();
+    window.addEventListener("resize", updateSlides);
+    return () => window.removeEventListener("resize", updateSlides);
+  }, []);
 
   return (
     <Container>
@@ -71,7 +106,7 @@ export default function MainMember() {
           scrollbar={{ draggable: true }}
           modules={[Scrollbar]}
           spaceBetween={16}
-          slidesPerView={3.65}
+          slidesPerView={slides}
           style={{ width: "fit-content" }}
         >
           <Slide>
@@ -114,6 +149,10 @@ const ImageWrapper = styled.div`
   width: 250px;
   border-radius: 20px;
   overflow: hidden;
+
+  ${media.phone`
+    width: 200px;
+  `}
 `
 
 const Image = styled.img`
@@ -149,6 +188,10 @@ const DisplayWrapper = styled.div`
 const DisplayName = styled.div`
   font-size: 1.6rem;
   font-weight: 700;
+
+  ${media.phone`
+    font-size: 1.4rem;
+  `}
 `
 
 const DisplayKorName = styled.div`
@@ -156,7 +199,7 @@ const DisplayKorName = styled.div`
 `
 
 const DisplayLine = styled.div`
-  width: 60%;
+  width: 50%;
   border-bottom: 1px solid #fff;
 
   &::after {
@@ -174,16 +217,9 @@ const DisplayLine = styled.div`
     pointer-events: none;
   }
 
-  @keyframes ripple {
-    0% {
-      transform: translateY(-50%) scaleY(0.1);
-      opacity: 0.8;
-    }
-    100% {
-      transform: translateY(-50%) scaleY(1.8); /* 퍼져나가는 정도 */
-      opacity: 0;
-    }
-  }
+  ${media.phone`
+    font-size: 1.4rem;
+  `}
 `
 
 const DisplayBirth = styled.div`

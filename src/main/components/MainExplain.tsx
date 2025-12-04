@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { motion } from "framer-motion";
 import { customChildVariants } from '../../motion/animation';
 import useObserver from '../../motion/useObserver';
+import { media } from '../../lib/media';
 
 const Container = styled(motion.div)`
   width: 100%;
@@ -11,6 +12,10 @@ const Container = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   background-color: #f4f4f4;
+
+  ${media.phone`
+    padding: 3rem 1.5rem;
+  `}
 `
 
 const Wrapper = styled.div`
@@ -18,6 +23,10 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${media.phone`
+    width: 100%;
+  `}
 `
 
 const Text = styled.div`
@@ -25,6 +34,11 @@ const Text = styled.div`
   font-size: 1rem;
   letter-spacing: -0.2px;
   line-height: 1.5rem;
+
+  ${media.phone`
+    font-size: 0.9rem;
+    text-align: center;
+  `}
 `
 
 const Bold = styled.span`
@@ -35,6 +49,12 @@ const WordBox = styled.div`
   margin-top: 1rem;
   display: flex;
   gap: 1rem;
+
+  ${media.phone`
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  `}
 `
 
 const Word = styled.div`
@@ -45,18 +65,14 @@ const Word = styled.div`
   cursor: pointer;
   font-weight: 600;
 
-  @keyframes wobble {
-    0%   { transform: rotate(0deg); }
-    20%  { transform: rotate(3deg); }
-    40%  { transform: rotate(-3deg); }
-    60%  { transform: rotate(2deg); }
-    80%  { transform: rotate(-2deg); }
-    100% { transform: rotate(0deg); }
-  }
-
   &:hover {
     animation: wobble 0.6s ease-in-out;
   }
+
+  ${media.phone`
+    padding: 0.4rem 0.9rem;
+    font-size: 0.8rem;
+  `}
 `
 
 export default function MainExplain() {

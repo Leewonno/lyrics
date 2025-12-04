@@ -2,6 +2,7 @@ import styled from "styled-components";
 import MainSwiper from "./MainSwiper";
 import MainExplain from "./MainExplain";
 import MainMember from "./MainMember";
+import { media } from "../../lib/media";
 
 const Box = styled.div`
   width: 100%;
@@ -17,40 +18,13 @@ const Box = styled.div`
     height: 540px;
   }
 
-  @media only screen and (max-width: 1050px) {
-
-  }
-
-  @media only screen and (max-width: 400px) {
-
-  }
-
-  @media only screen and (max-width: 350px) {
-
-  }
+  ${media.phone`
+    iframe{
+      width: 100%;
+      height: 49vw;
+    }
+  `}
 `;
-
-// const LinkBox = styled.div`
-//   width: 100%;
-//   margin-top: 50px;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 15px;
-
-//   @media only screen and (max-width: 1050px) {
-//     width: 100%;
-//     padding: 5%;
-//   }
-// `
-
-// const PageLinkBox = styled.div`
-// `
-
-// const OfficialLinkBox = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   gap: 15px;
-// `
 
 export function MainContent() {
   return (
