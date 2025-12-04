@@ -130,6 +130,7 @@ const ContentWrapper = styled.div`
   width: 60%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 1rem;
 `
 
@@ -184,7 +185,7 @@ export default function MemberContent() {
           {data.name}
           <Line />
         </Name>
-        <Sub>{data.real_name} / {data.birth}</Sub>
+        <Sub>{data.real_name}</Sub><Sub>{data.birth}</Sub>
         <StoryWrapper>
           {data.story.map((v, i) => {
             return (
