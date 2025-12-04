@@ -1,36 +1,55 @@
 import styled from "styled-components";
+import { media } from "../../lib/media";
 
 const Widget = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  border: 1px solid #e5e5e5;
+  /* border: 1px solid #e5e5e5; */
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 2px 10px;
   border-radius: 10px;
-  padding: 20px;
+  padding: 1rem 1.5rem;
   margin-bottom: 50px;
 
   h1{
-    font-size: 20px;
-    font-weight: 300;
+    font-size: 1.45rem;
+    font-weight: 500;
     margin-bottom: 5px;
-    margin-top: 10px;
+    margin-top: 5px;
   }
 
   div{
-    font-size: 15px;
+    font-size: 1rem;
     color: #b1b1b1;
     transition: all 0.5s;
-    margin: 1px 0px;
+    line-height: 1.5;
   }
 
   div span{
-    border: 1px solid #ebebeb;
+    border: none;
     color: #fff;
-    padding: 1px 5px;
-    border-radius: 5px;
+    padding: 2px 10px;
+    border-radius: 3px;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 0.8rem;
   }
+
+  ${media.phone`
+    padding: 1rem;
+
+    h1{
+      font-size: 1.2rem;
+    }
+
+    div{
+      font-size: 0.9rem;
+    }
+
+    div span{
+      padding: 1px 10px;
+    }
+
+  `}
 `;
 
 export function TranslateExample() {

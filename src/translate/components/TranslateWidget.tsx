@@ -4,6 +4,8 @@ import { visible, setMessage } from '../../redux/features/toast/toast';
 import styled from "styled-components";
 import { TranslateExample } from "./TranslateExample";
 // import callGPT from "../../common/components/chatgpt/lib/callGPT";
+import arrow_back from "../../assets/icons/arrow_back.svg"
+import { media } from "../../lib/media";
 
 const Widget = styled.div`
   width: 100%;
@@ -29,15 +31,22 @@ const WidgetForm = styled.form`
   display: flex;
   flex-direction: column;
 
-  @media only screen and (max-width: 1050px) {
+  ${media.phone`
     width: 100%;
     margin: 5%;
-  }
+  `}
 `;
 
 const SettingBox = styled.div`
   width: 100%;
   display: flex;
+
+  gap: 1rem;
+
+  ${media.phone`
+    gap: 1rem;
+    flex-wrap: wrap;
+  `}
 `;
 
 const TimeBox = styled.div`
@@ -48,14 +57,14 @@ const TimeBox = styled.div`
   input{
     width: 100px;
     text-align: right;
-    padding: 5px;
-    font-size: 14px;
-    border: 1px solid #e1e1e1;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border: none;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 10px;
   }
 
   input:focus{
     outline: none;
-    border: 1px solid #c8c8fa;
   }
 
   label{
@@ -63,9 +72,10 @@ const TimeBox = styled.div`
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
     background-color: #e5e5e5;
-    padding: 5px 8px;
-    font-size: 14px;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
     white-space: nowrap;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 10px;
   }
 
   span{
@@ -73,17 +83,36 @@ const TimeBox = styled.div`
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
     background-color: #e5e5e5;
-    padding: 5px 10px;
-    font-size: 14px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 10px;
   }
+
+  ${media.phone`
+    input{
+      width: 80px;
+      padding: 0.4rem;
+      font-size: 0.8rem;
+    }
+
+    label{
+      padding: 0.4rem 0.7rem;
+      font-size: 0.8rem;
+    }
+    
+    span{
+      padding: 0.4rem 0.9rem;
+      font-size: 0.8rem;
+    }
+  `}
 `
 
 const ButtonBox = styled.div`
   width: 100%;
   display: flex;
   gap: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
   button {
     width: 100px;
@@ -92,13 +121,23 @@ const ButtonBox = styled.div`
     border: 1px solid #e5e5e5;
     border-radius: 6px;
     color: #fff;
-    font-weight: 200;
+    font-weight: 400;
     user-select: none;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 10px;
   }
 
   button:focus{
-    outline: 3px solid #c8c8fa;
+    outline: 2px solid #c8c8fa;
   }
+
+  ${media.phone`
+    margin-top: 0;
+
+    button {
+      width: 80px;
+      height: 30px;
+    }
+  `}
 `;
 
 const InputBox = styled.div`
@@ -107,25 +146,37 @@ const InputBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
 
   textarea{
     width: 100%;
     height: 350px;
-    padding: 12px;
-    border: 1px solid #e5e5e5;
+    padding: 1rem;
+    border: none;
+    /* border: 1px solid #e5e5e5; */
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 10px;
     border-radius: 10px;
     resize: none;
   }
 
   textarea:focus{
-    outline: 3px solid #c8c8fa;
+    outline: 2px solid #c8c8fa;
   }
 
   span{
     color: #9b9b9b;
   }
+
+  ${media.phone`
+    textarea{
+      height: 300px;
+    }
+  `}
 `;
+
+const Image = styled.img`
+  transform: rotate(270deg);
+`
 
 export function TranslateWidget() {
 
@@ -189,7 +240,7 @@ export function TranslateWidget() {
     const blobUrl = window.URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = blobUrl;
-    link.download = `nmixxfantube.srt`;
+    link.download = `lyrics.srt`;
     link.click();
     link.remove();
     window.URL.revokeObjectURL(blobUrl);
@@ -263,17 +314,17 @@ export function TranslateWidget() {
             <input id="view_time" type="number" min={1} value={viewTime} onChange={(e) => numberCheck(e.target.value)} />
             <span>초</span>
           </TimeBox>
+          <ButtonBox>
+            <button style={{ backgroundColor: '#0d6efd' }} type="button" onClick={translateRun}>변환</button>
+            <button style={{ backgroundColor: '#dc3545' }} type="button" onClick={resetTextarea}>초기화</button>
+          </ButtonBox>
         </SettingBox>
-        <ButtonBox>
-          <button style={{ backgroundColor: '#0d6efd' }} type="button" onClick={translateRun}>변환</button>
-          <button style={{ backgroundColor: '#dc3545' }} type="button" onClick={resetTextarea}>초기화</button>
-        </ButtonBox>
         <InputBox>
           <textarea placeholder="가사를 입력하세요" value={lyrics} onChange={(e) => setLyrics(e.target.value)} />
-          <span>▼</span>
+          <Image src={arrow_back} alt="arrow_down" />
           <textarea readOnly value={translation} />
         </InputBox>
-        <ButtonBox>
+        <ButtonBox style={{marginTop: '1rem'}}>
           <button style={{ backgroundColor: '#198754' }} type="button" onClick={translateCopy}>복사</button>
           <button style={{ backgroundColor: '#919191' }} type="button" onClick={downloadSrtFile}>다운로드</button>
         </ButtonBox>
