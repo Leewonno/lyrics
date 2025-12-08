@@ -14,6 +14,7 @@ import sullyoon_sign from "../../assets/images/sullyoon_sign.webp"
 import bae_sign from "../../assets/images/bae_sign.webp"
 import jiwoo_sign from "../../assets/images/jiwoo_sign.webp"
 import kyujin_sign from "../../assets/images/kyujin_sign.webp"
+import { media } from "../../lib/media";
 
 type DataType = {
   name: string;
@@ -101,7 +102,13 @@ const memberData: Record<MemberType, DataType> = {
 
 const Container = styled.div`
   display: flex;
+  align-items: center;
   gap: 3rem;
+
+  ${media.phone`
+    flex-direction: column;
+    gap: 2rem;
+  `}
 `;
 
 const ImageWrapper = styled.div`
@@ -110,6 +117,10 @@ const ImageWrapper = styled.div`
   width: 40%;
   border-radius: 1.5rem;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+
+  ${media.phone`
+    width: 100%;
+  `}
 `
 
 const Image = styled.img`
@@ -124,6 +135,10 @@ const Sign = styled.img`
   width: 150px;
   filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
   user-select: none;
+
+  ${media.phone`
+    width: 50%;
+  `}
 `
 
 const ContentWrapper = styled.div`
@@ -141,6 +156,10 @@ const Name = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${media.phone`
+    font-size: 1.6rem;
+  `}
 `
 
 const Line = styled.div`
@@ -148,6 +167,10 @@ const Line = styled.div`
   height: 1px;
   border-bottom: 1px solid #888888;
   margin-top: 1rem;
+
+  ${media.phone`
+    width: 30px;
+  `}
 `
 
 const Sub = styled.div`

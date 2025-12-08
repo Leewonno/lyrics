@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { MemberType, setMember } from "../../redux/features/member/member";
 import { AppDispatch, RootState } from "../../redux/store";
 import styled from "styled-components";
+import { media } from "../../lib/media";
 
 const Box = styled.div`
   display: flex;
@@ -17,6 +18,18 @@ const Box = styled.div`
     border-radius: 2rem;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
   }
+
+
+  ${media.phone`
+    overflow-x: auto;
+
+    /* 스크롤바 없애기 */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  `}
 `
 
 const Button = styled.button`
@@ -33,6 +46,10 @@ const Button = styled.button`
   &:hover {
     animation: wobble 0.6s ease-in-out;
   }
+
+  ${media.phone`
+    font-size: 1.2rem;
+  `}
 `
 
 // 멤버 선택
