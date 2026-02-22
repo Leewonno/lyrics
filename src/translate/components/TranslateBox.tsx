@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import translateBg from "../../assets/images/translate_bg.jpg";
+import translateBg from "../../assets/images/common_bg.jpg";
 import { TranslateWidget } from "./TranslateWidget";
 
 const Section = styled.section`
