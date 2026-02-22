@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { EffectCards, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-cards";
 import styled from "styled-components";
@@ -62,6 +62,122 @@ const Container = styled.div`
   `}
 `;
 
+const SlideInner = styled.div`
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #000;
+`;
+
+const Thumbnail = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+`;
+
+const PlayOverlay = styled.button`
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.25);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
+`;
+
+const PlayIcon = styled.div`
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s;
+
+  ${PlayOverlay}:hover & {
+    transform: scale(1.1);
+  }
+
+  /* triangle */
+  &::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 20px;
+    border-color: transparent transparent transparent #fff;
+    margin-left: 4px;
+  }
+`;
+
+const StyledIframe = styled.iframe`
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+`;
+
+type VideoItem = {
+	id: string;
+	title: string;
+};
+
+const videos: VideoItem[] = [
+	{ id: "EmeW6li6bbo", title: "Blue Valentine" },
+	{ id: "aFrQIJ5cbRc", title: "Know About Me" },
+	{ id: "_Q8Jskeps9w", title: "See that?" },
+	{ id: "7UecFm_bSTU", title: "DASH" },
+	{ id: "Rd2wppggYxo", title: "Party O' Clock" },
+	{ id: "kBwikDvbRbI", title: "Love Me Like This" },
+	{ id: "EDnwWcFpObo", title: "Funky Glitter Christmas" },
+	{ id: "p1bjnyDqI9k", title: "DICE" },
+	{ id: "3GWscde8rM8", title: "O.O" },
+];
+
+type VideoSlideProps = {
+	video: VideoItem;
+};
+
+function VideoSlide({ video }: VideoSlideProps) {
+	const [active, setActive] = useState(false);
+
+	return (
+		<SlideInner>
+			{active ? (
+				<StyledIframe
+					src={`https://www.youtube.com/embed/${video.id}?autoplay=1`}
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					referrerPolicy="strict-origin-when-cross-origin"
+					allowFullScreen
+					title={video.title}
+				/>
+			) : (
+				<>
+					<Thumbnail
+						src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+						alt={video.title}
+						loading="lazy"
+					/>
+					<PlayOverlay onClick={() => setActive(true)} aria-label={`${video.title} 재생`}>
+						<PlayIcon />
+					</PlayOverlay>
+				</>
+			)}
+		</SlideInner>
+	);
+}
+
 export default function MainSwiper() {
 	return (
 		<Container>
@@ -70,103 +186,18 @@ export default function MainSwiper() {
 				grabCursor={false}
 				modules={[EffectCards, Navigation]}
 				cardsEffect={{
-					perSlideOffset: 8, // 카드 겹침 정도
+					perSlideOffset: 8,
 					perSlideRotate: 0,
-					slideShadows: false, // 카드 그림자
+					slideShadows: false,
 				}}
 				navigation={true}
 				loop={true}
 			>
-				<SwiperSlide>
-					<iframe
-						src="https://www.youtube.com/embed/EmeW6li6bbo"
-						frameBorder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						referrerPolicy="strict-origin-when-cross-origin"
-						allowFullScreen
-						title="Blue Valentine"
-					></iframe>
-				</SwiperSlide>
-				<SwiperSlide>
-					<iframe
-						src="https://www.youtube.com/embed/aFrQIJ5cbRc"
-						frameBorder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						referrerPolicy="strict-origin-when-cross-origin"
-						allowFullScreen
-						title="Know About Me"
-					></iframe>
-				</SwiperSlide>
-				<SwiperSlide>
-					<iframe
-						src="https://www.youtube.com/embed/_Q8Jskeps9w"
-						frameBorder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						referrerPolicy="strict-origin-when-cross-origin"
-						allowFullScreen
-						title="See that?"
-					></iframe>
-				</SwiperSlide>
-				<SwiperSlide>
-					<iframe
-						src="https://www.youtube.com/embed/7UecFm_bSTU"
-						frameBorder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						referrerPolicy="strict-origin-when-cross-origin"
-						allowFullScreen
-						title="DASH"
-					></iframe>
-				</SwiperSlide>
-				<SwiperSlide>
-					<iframe
-						src="https://www.youtube.com/embed/Rd2wppggYxo"
-						frameBorder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						referrerPolicy="strict-origin-when-cross-origin"
-						allowFullScreen
-						title="Party O' Clock"
-					></iframe>
-				</SwiperSlide>
-				<SwiperSlide>
-					<iframe
-						src="https://www.youtube.com/embed/kBwikDvbRbI"
-						frameBorder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						referrerPolicy="strict-origin-when-cross-origin"
-						allowFullScreen
-						title="Love Me Like This"
-					></iframe>
-				</SwiperSlide>
-				<SwiperSlide>
-					<iframe
-						src="https://www.youtube.com/embed/EDnwWcFpObo"
-						frameBorder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						referrerPolicy="strict-origin-when-cross-origin"
-						allowFullScreen
-						title="Funky Glitter Christmas"
-					></iframe>
-				</SwiperSlide>
-				<SwiperSlide>
-					<iframe
-						src="https://www.youtube.com/embed/p1bjnyDqI9k"
-						frameBorder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						referrerPolicy="strict-origin-when-cross-origin"
-						allowFullScreen
-						title="DICE"
-					></iframe>
-				</SwiperSlide>
-				<SwiperSlide>
-					<iframe
-						src="https://www.youtube.com/embed/3GWscde8rM8"
-						frameBorder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-						referrerPolicy="strict-origin-when-cross-origin"
-						allowFullScreen
-						title="O.O"
-					></iframe>
-				</SwiperSlide>
+				{videos.map((video) => (
+					<SwiperSlide key={video.id}>
+						<VideoSlide video={video} />
+					</SwiperSlide>
+				))}
 			</Swiper>
 		</Container>
 	);

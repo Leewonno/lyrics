@@ -5,27 +5,28 @@ const Widget = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* border: 1px solid #e5e5e5; */
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 2px 10px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   padding: 1rem 1.5rem;
-  margin-bottom: 50px;
+  margin-bottom: 1.5rem;
 
-  h1{
+  h1 {
     font-size: 1.45rem;
     font-weight: 500;
+    color: #ffffff;
     margin-bottom: 5px;
     margin-top: 5px;
   }
 
-  div{
+  div {
     font-size: 1rem;
-    color: #b1b1b1;
+    color: rgba(255, 255, 255, 0.6);
     transition: all 0.5s;
     line-height: 1.5;
   }
 
-  div span{
+  div span {
     border: none;
     color: #fff;
     padding: 2px 10px;
@@ -37,18 +38,17 @@ const Widget = styled.div`
   ${media.phone`
     padding: 1rem;
 
-    h1{
+    h1 {
       font-size: 1.2rem;
     }
 
-    div{
+    div {
       font-size: 0.9rem;
     }
 
-    div span{
+    div span {
       padding: 1px 10px;
     }
-
   `}
 `;
 
@@ -66,9 +66,6 @@ export function TranslateExample() {
 				<span style={{ backgroundColor: "#919191" }}>다운로드</span> 버튼을
 				누릅니다.
 			</div>
-			{/* <h1>팁(TIP)</h1>
-      <div>① 자막 재생 시간을 설정할 수 있습니다.</div>
-      <div>② 초기화 버튼은 모든 입력 창을 초기화합니다.</div> */}
 		</Widget>
 	);
 }

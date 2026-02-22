@@ -12,19 +12,15 @@ const Box = styled.div`
   justify-content: space-between;
   width: 100%;
 
-  /* 선택된 이름 */
   .active {
-    background-color: #000;
-    color: #fff;
+    background: rgba(255, 255, 255, 0.9);
+    color: #111;
     border-radius: 2rem;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   }
-
 
   ${media.phone`
     overflow-x: auto;
-
-    /* 스크롤바 없애기 */
     -ms-overflow-style: none;
     scrollbar-width: none;
     &::-webkit-scrollbar {
@@ -36,24 +32,24 @@ const Box = styled.div`
 const Button = styled.button`
   padding: 0.5rem 1.5rem;
   border: none;
-  background: rgba(255, 255, 255, 0.05);
+  background: transparent;
   cursor: pointer;
   font-weight: 700;
   font-size: 1.5rem;
-  color: #626262;
-  transition: all 0.3s;
-  text-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.2s, background 0.2s;
 
-  &:hover {
+  &:not(.active):hover {
+    color: rgba(255, 255, 255, 0.9);
     animation: wobble 0.6s ease-in-out;
   }
 
   ${media.phone`
     font-size: 1.2rem;
+    padding: 0.5rem 1rem;
   `}
 `;
 
-// 멤버 선택
 export default function MemberSelect() {
 	const location = useLocation();
 	const params = new URLSearchParams(location.search);

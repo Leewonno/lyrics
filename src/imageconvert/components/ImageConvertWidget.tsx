@@ -1,5 +1,5 @@
-import encodeWebp, { init as initWebpEncoder } from "@jsquash/webp/encode";
 import webpEncWasmUrl from "@jsquash/webp/codec/enc/webp_enc.wasm?url";
+import encodeWebp, { init as initWebpEncoder } from "@jsquash/webp/encode";
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
@@ -7,15 +7,24 @@ import { media } from "../../lib/media";
 import { setMessage, visible } from "../../redux/features/toast/toast";
 
 const Widget = styled.div`
+  position: relative;
+  z-index: 1;
   width: 960px;
-  margin-top: 100px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 100px;
 
   ${media.phone`
     width: 100%;
     margin: 100px 5% 0;
+    padding: 1.2rem;
   `}
 `;
 
@@ -33,18 +42,29 @@ const Label = styled.label`
   font-size: 0.9rem;
   font-weight: 600;
   white-space: nowrap;
+  color: rgba(255, 255, 255, 0.85);
 `;
 
 const QualityInput = styled.input`
   width: 60px;
   padding: 0.4rem 0.5rem;
-  border: none;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 10px;
   font-size: 0.9rem;
   text-align: center;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  color: #fff;
+  backdrop-filter: blur(4px);
 
   &:focus {
-    outline: 2px solid #c8c8fa;
+    outline: none;
+    border-color: rgba(200, 200, 250, 0.6);
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    filter: invert(1);
   }
 `;
 
@@ -56,15 +76,17 @@ const UploadArea = styled.label`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  border: 2px dashed #c8c8c8;
+  border: 2px dashed rgba(255, 255, 255, 0.3);
   border-radius: 12px;
   cursor: pointer;
-  color: #9b9b9b;
+  color: rgba(255, 255, 255, 0.5);
   font-size: 0.95rem;
-  transition: border-color 0.2s;
+  background: rgba(255, 255, 255, 0.04);
+  transition: border-color 0.2s, background 0.2s;
 
   &:hover {
-    border-color: #9b9bfa;
+    border-color: rgba(200, 200, 250, 0.7);
+    background: rgba(255, 255, 255, 0.08);
   }
 `;
 
@@ -91,20 +113,20 @@ const PreviewCard = styled.div`
 const PreviewTitle = styled.div`
   font-size: 0.85rem;
   font-weight: 600;
-  color: #626262;
+  color: rgba(255, 255, 255, 0.7);
 `;
 
 const PreviewImage = styled.img`
   width: 100%;
   border-radius: 8px;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   object-fit: contain;
   max-height: 300px;
 `;
 
 const InfoText = styled.div`
   font-size: 0.8rem;
-  color: #9b9b9b;
+  color: rgba(255, 255, 255, 0.5);
 `;
 
 const ButtonBox = styled.div`
@@ -114,20 +136,32 @@ const ButtonBox = styled.div`
   button {
     height: 35px;
     padding: 0 1.2rem;
-    border: 1px solid #e5e5e5;
+    border: none;
     border-radius: 6px;
     color: #fff;
     font-size: 0.9rem;
+    font-weight: 500;
     cursor: pointer;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 10px;
+    transition: filter 0.15s, transform 0.15s;
 
     &:focus {
-      outline: 2px solid #c8c8fa;
+      outline: 2px solid rgba(200, 200, 250, 0.7);
+    }
+
+    &:hover {
+      filter: brightness(1.15);
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
     }
 
     &:disabled {
       opacity: 0.4;
       cursor: not-allowed;
+      transform: none;
+      filter: none;
     }
   }
 `;
@@ -219,8 +253,7 @@ export function ImageConvertWidget() {
 			);
 			setItems(updated);
 			toastCall("변환 성공");
-		} catch (error) {
-			console.log(error);
+		} catch {
 			alert("변환 중 오류가 발생했습니다.");
 		} finally {
 			setConverting(false);

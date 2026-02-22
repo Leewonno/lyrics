@@ -8,6 +8,8 @@ import { setMessage, visible } from "../../redux/features/toast/toast";
 import { TranslateExample } from "./TranslateExample";
 
 const Widget = styled.div`
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: auto;
   display: flex;
@@ -15,32 +17,28 @@ const Widget = styled.div`
   margin-top: 100px;
 `;
 
-// const Title = styled.div`
-//   width: 100%;
-//   display: flex;
-//   justify-content: center;
-//   font-size: 30px;
-//   font-weight: 600;
-//   margin-bottom: 50px;
-//   margin-top: 100px;
-// `
-
 const WidgetForm = styled.form`
   width: 960px;
   height: 100%;
   display: flex;
   flex-direction: column;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 2rem;
 
   ${media.phone`
     width: 100%;
-    margin: 5%;
+    margin: 0 5% 0;
+    padding: 1.2rem;
   `}
 `;
 
 const SettingBox = styled.div`
   width: 100%;
   display: flex;
-
   gap: 1rem;
 
   ${media.phone`
@@ -54,53 +52,63 @@ const TimeBox = styled.div`
   justify-content: center;
   align-items: center;
 
-  input{
+  input {
     width: 100px;
     text-align: right;
     padding: 0.5rem;
     font-size: 0.9rem;
-    border: none;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: none;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    backdrop-filter: blur(4px);
   }
 
-  input:focus{
+  input:focus {
     outline: none;
+    background: rgba(255, 255, 255, 0.2);
   }
 
-  label{
-    border: 1px solid #e1e1e1;
+  input::-webkit-inner-spin-button,
+  input::-webkit-outer-spin-button {
+    filter: invert(1);
+  }
+
+  label {
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
-    background-color: #e5e5e5;
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.85);
     padding: 0.5rem 0.8rem;
     font-size: 0.9rem;
     white-space: nowrap;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 10px;
   }
 
-  span{
-    border: 1px solid #e1e1e1;
+  span {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: none;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
-    background-color: #e5e5e5;
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.85);
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 10px;
   }
 
   ${media.phone`
-    input{
+    input {
       width: 80px;
       padding: 0.4rem;
       font-size: 0.8rem;
     }
 
-    label{
+    label {
       padding: 0.4rem 0.7rem;
       font-size: 0.8rem;
     }
-    
-    span{
+
+    span {
       padding: 0.4rem 0.9rem;
       font-size: 0.8rem;
     }
@@ -118,16 +126,25 @@ const ButtonBox = styled.div`
     width: 100px;
     cursor: pointer;
     height: 35px;
-    border: 1px solid #e5e5e5;
+    border: none;
     border-radius: 6px;
     color: #fff;
-    font-weight: 400;
+    font-weight: 500;
     user-select: none;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 10px;
+    transition: filter 0.15s, transform 0.15s;
   }
 
-  button:focus{
-    outline: 2px solid #c8c8fa;
+  button:focus {
+    outline: 2px solid rgba(200, 200, 250, 0.7);
+  }
+
+  button:hover {
+    filter: brightness(1.15);
+    transform: translateY(-1px);
+  }
+
+  button:active {
+    transform: translateY(0);
   }
 
   ${media.phone`
@@ -148,27 +165,38 @@ const InputBox = styled.div`
   align-items: center;
   gap: 1rem;
 
-  textarea{
+  textarea {
     width: 100%;
     height: 350px;
     padding: 1rem;
-    border: none;
-    /* border: 1px solid #e5e5e5; */
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     resize: none;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #fff;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    transition: border-color 0.2s, background 0.2s;
   }
 
-  textarea:focus{
-    outline: 2px solid #c8c8fa;
+  textarea::placeholder {
+    color: rgba(255, 255, 255, 0.35);
   }
 
-  span{
-    color: #9b9b9b;
+  textarea:focus {
+    outline: none;
+    border-color: rgba(200, 200, 250, 0.6);
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  span {
+    color: rgba(255, 255, 255, 0.45);
   }
 
   ${media.phone`
-    textarea{
+    textarea {
       height: 300px;
     }
   `}
@@ -176,6 +204,7 @@ const InputBox = styled.div`
 
 const Image = styled.img`
   transform: rotate(270deg);
+  filter: invert(1) opacity(0.6);
 `;
 
 export function TranslateWidget() {
@@ -297,21 +326,9 @@ export function TranslateWidget() {
 		toastCall("변환 성공");
 	};
 
-	// ==================================================
-	// ChatGPT 연결
-	// useEffect(() => {
-	//   const test = async ()=>{
-	//     await callGPT()
-	//   }
-	//   test()
-	// }, [])
-
 	return (
 		<Widget>
 			<WidgetForm>
-				{/* <Title>
-            가사 변환
-          </Title> */}
 				<TranslateExample />
 				<SettingBox>
 					<TimeBox>
