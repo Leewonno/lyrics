@@ -10,6 +10,7 @@ const Section = styled.section`
   align-items: center;
   min-height: calc(-60px + 100vh);
   margin-top: 60px;
+  padding-bottom: 100px;
 `;
 
 const Wrapper = styled.div`

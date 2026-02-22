@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Widget = styled.footer`
   width: 100%;
   height: 150px;
-  margin-top: 100px;
+  /* margin-top: 100px; */
   background-color: #202020;
   display: flex;
   justify-content: center;
