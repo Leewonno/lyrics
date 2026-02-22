@@ -1,5 +1,5 @@
 const setLocalStorageTimer = (key: string, value: string) => {
-	let item = value;
+	const item = value;
 
 	localStorage.setItem(key, JSON.stringify(item));
 };
@@ -12,4 +12,4 @@ const getLocalStorage = (key: string) => {
 	return item;
 };
 
-export { setLocalStorageTimer, getLocalStorage }
+export { setLocalStorageTimer, getLocalStorage };

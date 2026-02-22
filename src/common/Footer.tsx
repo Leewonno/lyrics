@@ -15,14 +15,12 @@ const Widget = styled.footer`
 const Copyright = styled.div`
   font-size: 0.9rem;
   color: #fff;
-`
+`;
 
 export function Footer() {
-  return (
-    <Widget>
-      <Copyright>
-        ⓒ 2025 NMIXXFanPage. All rights reserved.
-      </Copyright>
-    </Widget>
-  )
+	return (
+		<Widget>
+			<Copyright>ⓒ 2025 NMIXXFanPage. All rights reserved.</Copyright>
+		</Widget>
+	);
 }

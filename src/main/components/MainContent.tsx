@@ -12,7 +12,7 @@ const Box = styled.div`
   gap: 8rem;
   align-items: center;
 
-  iframe{
+  iframe {
     border-radius: 15px;
     width: 960px;
     height: 540px;
@@ -36,5 +36,5 @@ export function MainContent() {
       {/* 멤버 */}
       <MainMember />
     </Box>
-  )
+  );
 }

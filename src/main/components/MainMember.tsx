@@ -1,23 +1,22 @@
-import styled from 'styled-components';
 import { motion } from "framer-motion";
-import { customChildVariants } from '../../motion/animation';
-import useObserver from '../../motion/useObserver';
-import lily from "../../assets/images/lily_sp.webp"
-import haewon from "../../assets/images/haewon_sp.webp"
-import sullyoon from "../../assets/images/sullyoon_sp.webp"
-import bae from "../../assets/images/bae_sp.webp"
-import jiwoo from "../../assets/images/jiwoo_sp.webp"
-import kyujin from "../../assets/images/kyujin_sp.webp"
-
+import styled from "styled-components";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
+import bae from "../../assets/images/bae_sp.webp";
+import haewon from "../../assets/images/haewon_sp.webp";
+import jiwoo from "../../assets/images/jiwoo_sp.webp";
+import kyujin from "../../assets/images/kyujin_sp.webp";
+import lily from "../../assets/images/lily_sp.webp";
+import sullyoon from "../../assets/images/sullyoon_sp.webp";
+import { customChildVariants } from "../../motion/animation";
+import useObserver from "../../motion/useObserver";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/scrollbar';
-import { Scrollbar } from 'swiper/modules';
-import { media } from '../../lib/media';
-import { useEffect, useState } from 'react';
+import "swiper/css";
+import "swiper/css/scrollbar";
+import { useEffect, useState } from "react";
+import { Scrollbar } from "swiper/modules";
+import { media } from "../../lib/media";
 
 const Container = styled.div`
   width: 960px;
@@ -46,7 +45,7 @@ const Container = styled.div`
       padding: 1rem;
     }
   `}
-`
+`;
 
 const Wrapper = styled(motion.div)`
   width: 100%;
@@ -56,7 +55,7 @@ const Wrapper = styled(motion.div)`
   ${media.phone`
     font-size: 1.4rem;
   `}
-`
+`;
 
 const Title = styled.div`
   width: 100%;
@@ -67,7 +66,7 @@ const Title = styled.div`
   ${media.phone`
     font-size: 1.5rem;
   `}
-`
+`;
 
 const Slide = styled(SwiperSlide)`
   width: auto !important;
@@ -76,94 +75,118 @@ const Slide = styled(SwiperSlide)`
 `;
 
 export default function MainMember() {
-  const { ref, animation } = useObserver();
-  const [slides, setSlides] = useState<number>(3.67);
+	const { ref, animation } = useObserver();
+	const [slides, setSlides] = useState<number>(3.67);
 
-  const interpolate = (current: number) => {
-    if (current > 1100) return 3.67;
-    return current / 224;
-  };
+	useEffect(() => {
+		const interpolate = (current: number) => {
+			if (current > 1100) return 3.67;
+			return current / 224;
+		};
+		const updateSlides = () => {
+			const w = window.innerWidth;
+			const value = interpolate(w);
+			setSlides(value);
+		};
+		updateSlides();
+		window.addEventListener("resize", updateSlides);
+		return () => window.removeEventListener("resize", updateSlides);
+	}, []);
 
-  useEffect(() => {
-    const updateSlides = () => {
-      const w = window.innerWidth;
-      const value = interpolate(w);
-      setSlides(value);
-    };
-    updateSlides();
-    window.addEventListener("resize", updateSlides);
-    return () => window.removeEventListener("resize", updateSlides);
-  }, []);
-
-  return (
-    <Container>
-      <Title>
-        MEMBER
-      </Title>
-      <Wrapper ref={ref} animate={animation} variants={customChildVariants}>
-        <Swiper
-          loop={false}
-          scrollbar={{ draggable: true }}
-          modules={[Scrollbar]}
-          spaceBetween={16}
-          slidesPerView={slides}
-          style={{ width: "fit-content" }}
-        >
-          <Slide>
-            <Member img={lily} name={'LILY'} kor={'릴리'} birth={'2002.10.17'} />
-          </Slide>
-          <Slide>
-            <Member img={haewon} name={'HAEWON'} kor={'해원'} birth={'2003.02.25'} />
-          </Slide>
-          <Slide>
-            <Member img={sullyoon} name={'SULLYOON'} kor={'설윤'} birth={'2004.01.26'} />
-          </Slide>
-          <Slide>
-            <Member img={bae} name={'BAE'} kor={'배이'} birth={'2004.12.28'} />
-          </Slide>
-          <Slide>
-            <Member img={jiwoo} name={'JIWOO'} kor={'지우'} birth={'2005.04.13'} />
-          </Slide>
-          <Slide>
-            <Member img={kyujin} name={'KYUJIN'} kor={'규진'} birth={'2006.05.26'} />
-          </Slide>
-        </Swiper>
-      </Wrapper>
-    </Container>
-  )
+	return (
+		<Container>
+			<Title>MEMBER</Title>
+			<Wrapper ref={ref} animate={animation} variants={customChildVariants}>
+				<Swiper
+					loop={false}
+					scrollbar={{ draggable: true }}
+					modules={[Scrollbar]}
+					spaceBetween={16}
+					slidesPerView={slides}
+					style={{ width: "fit-content" }}
+				>
+					<Slide>
+						<Member
+							img={lily}
+							name={"LILY"}
+							kor={"릴리"}
+							birth={"2002.10.17"}
+						/>
+					</Slide>
+					<Slide>
+						<Member
+							img={haewon}
+							name={"HAEWON"}
+							kor={"해원"}
+							birth={"2003.02.25"}
+						/>
+					</Slide>
+					<Slide>
+						<Member
+							img={sullyoon}
+							name={"SULLYOON"}
+							kor={"설윤"}
+							birth={"2004.01.26"}
+						/>
+					</Slide>
+					<Slide>
+						<Member img={bae} name={"BAE"} kor={"배이"} birth={"2004.12.28"} />
+					</Slide>
+					<Slide>
+						<Member
+							img={jiwoo}
+							name={"JIWOO"}
+							kor={"지우"}
+							birth={"2005.04.13"}
+						/>
+					</Slide>
+					<Slide>
+						<Member
+							img={kyujin}
+							name={"KYUJIN"}
+							kor={"규진"}
+							birth={"2006.05.26"}
+						/>
+					</Slide>
+				</Swiper>
+			</Wrapper>
+		</Container>
+	);
 }
 
 type MemberProps = {
-  img: string;
-  name: string;
-  kor: string;
-  birth: string;
-}
+	img: string;
+	name: string;
+	kor: string;
+	birth: string;
+};
 
 const Link = styled.a`
   text-decoration: none;
-`
+`;
 
 const ImageWrapper = styled.div`
   position: relative;
   width: 250px;
   border-radius: 20px;
   overflow: hidden;
+  height: 100%;
 
   ${media.phone`
     width: 200px;
   `}
-`
+`;
 
 const Image = styled.img`
   width: 100%;
+  height: 100%;
   transition: transform 0.3s;
 
   ${Link}:hover & {
     filter: brightness(0.6);
     transform: scale(1.1);
   }
-`
+`;
 
 const DisplayWrapper = styled.div`
   position: absolute;
@@ -183,7 +206,7 @@ const DisplayWrapper = styled.div`
     align-items: center;
     gap: 1rem;
   }
-`
+`;
 
 const DisplayName = styled.div`
   font-size: 1.6rem;
@@ -192,11 +215,11 @@ const DisplayName = styled.div`
   ${media.phone`
     font-size: 1.4rem;
   `}
-`
+`;
 
 const DisplayKorName = styled.div`
   font-size: 0.9rem;
-`
+`;
 
 const DisplayLine = styled.div`
   width: 50%;
@@ -210,7 +233,7 @@ const DisplayLine = styled.div`
     transform: translateY(-50%) scaleY(0.1);
     width: 100%;
     height: 100%;
-    background: rgba(255,255,255,0.4);
+    background: rgba(255, 255, 255, 0.4);
     border-radius: 4px;
     transform-origin: center;
     animation: ripple 1.2s ease-out forwards;
@@ -220,30 +243,24 @@ const DisplayLine = styled.div`
   ${media.phone`
     font-size: 1.4rem;
   `}
-`
+`;
 
 const DisplayBirth = styled.div`
   font-size: 0.9rem;
-`
+`;
 
 const Member = ({ img, name, kor, birth }: MemberProps) => {
-  return (
-    <Link href={`/member?name=${name}`}>
-      <ImageWrapper>
-        <DisplayWrapper>
-          <DisplayName>
-            {name}
-          </DisplayName>
-          <DisplayKorName>
-            {kor}
-          </DisplayKorName>
-          <DisplayLine />
-          <DisplayBirth>
-            {birth}
-          </DisplayBirth>
-        </DisplayWrapper>
-        <Image src={img} />
-      </ImageWrapper>
-    </Link>
-  )
-}
+	return (
+		<Link href={`/member?name=${name}`}>
+			<ImageWrapper>
+				<DisplayWrapper>
+					<DisplayName>{name}</DisplayName>
+					<DisplayKorName>{kor}</DisplayKorName>
+					<DisplayLine />
+					<DisplayBirth>{birth}</DisplayBirth>
+				</DisplayWrapper>
+				<Image src={img} />
+			</ImageWrapper>
+		</Link>
+	);
+};

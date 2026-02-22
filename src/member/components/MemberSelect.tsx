@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { MemberType, setMember } from "../../redux/features/member/member";
-import { AppDispatch, RootState } from "../../redux/store";
 import styled from "styled-components";
 import { media } from "../../lib/media";
+import type { MemberType } from "../../redux/features/member/member";
+import { setMember } from "../../redux/features/member/member";
+import type { AppDispatch, RootState } from "../../redux/store";
 
 const Box = styled.div`
   display: flex;
@@ -30,7 +31,7 @@ const Box = styled.div`
       display: none;
     }
   `}
-`
+`;
 
 const Button = styled.button`
   padding: 0.5rem 1.5rem;
@@ -50,34 +51,64 @@ const Button = styled.button`
   ${media.phone`
     font-size: 1.2rem;
   `}
-`
+`;
 
 // 멤버 선택
 export default function MemberSelect() {
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const query = Object.fromEntries(params.entries());
-  const dispatch = useDispatch<AppDispatch>();
-  const member = useSelector((state: RootState) => state.member.member);
+	const location = useLocation();
+	const params = new URLSearchParams(location.search);
+	const query = Object.fromEntries(params.entries());
+	const dispatch = useDispatch<AppDispatch>();
+	const member = useSelector((state: RootState) => state.member.member);
 
-  useEffect(() => {
-    if (query.name) {
-      dispatch(setMember(query.name));
-    }
-  }, [])
+	useEffect(() => {
+		if (query.name) {
+			dispatch(setMember(query.name as MemberType));
+		}
+	}, [query.name, dispatch]);
 
-  const handleButtonClick = (name: MemberType) => {
-    dispatch(setMember(name));
-  }
+	const handleButtonClick = (name: MemberType) => {
+		dispatch(setMember(name));
+	};
 
-  return (
-    <Box>
-      <Button onClick={() => handleButtonClick("LILY")} className={member === 'LILY' ? 'active' : ''}>LILY</Button>
-      <Button onClick={() => handleButtonClick("HAEWON")} className={member === 'HAEWON' ? 'active' : ''}>HAEWON</Button>
-      <Button onClick={() => handleButtonClick("SULLYOON")} className={member === 'SULLYOON' ? 'active' : ''}>SULLYOON</Button>
-      <Button onClick={() => handleButtonClick("BAE")} className={member === 'BAE' ? 'active' : ''}>BAE</Button>
-      <Button onClick={() => handleButtonClick("JIWOO")} className={member === 'JIWOO' ? 'active' : ''}>JIWOO</Button>
-      <Button onClick={() => handleButtonClick("KYUJIN")} className={member === 'KYUJIN' ? 'active' : ''}>KYUJIN</Button>
-    </Box>
-  )
+	return (
+		<Box>
+			<Button
+				onClick={() => handleButtonClick("LILY")}
+				className={member === "LILY" ? "active" : ""}
+			>
+				LILY
+			</Button>
+			<Button
+				onClick={() => handleButtonClick("HAEWON")}
+				className={member === "HAEWON" ? "active" : ""}
+			>
+				HAEWON
+			</Button>
+			<Button
+				onClick={() => handleButtonClick("SULLYOON")}
+				className={member === "SULLYOON" ? "active" : ""}
+			>
+				SULLYOON
+			</Button>
+			<Button
+				onClick={() => handleButtonClick("BAE")}
+				className={member === "BAE" ? "active" : ""}
+			>
+				BAE
+			</Button>
+			<Button
+				onClick={() => handleButtonClick("JIWOO")}
+				className={member === "JIWOO" ? "active" : ""}
+			>
+				JIWOO
+			</Button>
+			<Button
+				onClick={() => handleButtonClick("KYUJIN")}
+				className={member === "KYUJIN" ? "active" : ""}
+			>
+				KYUJIN
+			</Button>
+		</Box>
+	);
 }
