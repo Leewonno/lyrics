@@ -32,6 +32,7 @@ const Widget = styled.div`
   justify-content: center;
   align-items: center;
   animation: ${Fade} 1.5s infinite linear alternate;
+  z-index: 1000;
 `;
 
 const Content = styled.div`
