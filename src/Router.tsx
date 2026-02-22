@@ -2,6 +2,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Album from "./album/Album";
+import NotFound from "./common/NotFound";
 import { ImageConvert } from "./imageconvert/ImageConvert";
 import { Main } from "./main/Main";
 import { Member } from "./member/Member";
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
 			{
 				path: "/image-convert",
 				element: <ImageConvert />,
+			},
+			{
+				path: "*",
+				element: <NotFound />,
 			},
 		],
 	},
