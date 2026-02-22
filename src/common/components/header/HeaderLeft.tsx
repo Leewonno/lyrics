@@ -67,6 +67,9 @@ export function HeaderLeft() {
 				<Menu href="/translate" title="translate">
 					자막변환
 				</Menu>
+				<Menu href="/image-convert" title="image-convert">
+					이미지변환
+				</Menu>
 			</MenuContainer>
 		</Component>
 	);
