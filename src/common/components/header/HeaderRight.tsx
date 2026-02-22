@@ -1,15 +1,14 @@
-import styled from "styled-components";
-import youtube from "../../../assets/icons/youtube.svg"
-import instagram from "../../../assets/icons/instagram.svg"
-import facebook from "../../../assets/icons/facebook.svg"
-import weibo from "../../../assets/icons/weibo.svg"
-import twitter from "../../../assets/icons/twitter.svg"
-import tiktok from "../../../assets/icons/tiktok.svg"
-import close from "../../../assets/icons/close.svg"
-import menu from "../../../assets/icons/menu.svg"
-import { media } from "../../../lib/media";
 import { useState } from "react";
-
+import styled from "styled-components";
+import close from "../../../assets/icons/close.svg";
+import facebook from "../../../assets/icons/facebook.svg";
+import instagram from "../../../assets/icons/instagram.svg";
+import menu from "../../../assets/icons/menu.svg";
+import tiktok from "../../../assets/icons/tiktok.svg";
+import twitter from "../../../assets/icons/twitter.svg";
+import weibo from "../../../assets/icons/weibo.svg";
+import youtube from "../../../assets/icons/youtube.svg";
+import { media } from "../../../lib/media";
 
 const Component = styled.div`
 
@@ -22,7 +21,7 @@ const Wrapper = styled.div`
   ${media.phone`
     display: none;
   `}
-`
+`;
 
 const MobileWrapper = styled.div`
   display: none;
@@ -30,7 +29,7 @@ const MobileWrapper = styled.div`
   ${media.phone`
     display: flex;
   `}
-`
+`;
 
 const Link = styled.a`
   width: 25px;
@@ -48,12 +47,12 @@ const Link = styled.a`
 
 const LinkImage = styled.img`
   width: 90%;
-`
+`;
 
 const Toggle = styled.img`
   width: 25px;
   cursor: pointer;
-`
+`;
 
 const MenuBox = styled.div`
   position: absolute;
@@ -67,7 +66,7 @@ const MenuBox = styled.div`
   ${media.phone`
     display: block;
   `}
-`
+`;
 
 const MenuContainer = styled.div`
   display: flex;
@@ -79,7 +78,7 @@ const MenuContainer = styled.div`
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
-`
+`;
 
 const Menu = styled.a`
   text-decoration: none;
@@ -90,7 +89,7 @@ const Menu = styled.a`
   &:hover {
     font-weight: 600;
   }
-`
+`;
 
 const MobileLinkBox = styled.div`
   display: none;
@@ -99,72 +98,122 @@ const MobileLinkBox = styled.div`
   ${media.phone`
     display: flex;
   `}
-`
+`;
 
 export function HeaderRight() {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  return (
-    <Component>
-      <Wrapper>
-        <Link href="https://www.youtube.com/@NMIXXOfficial" title="Official Youtube" target="_blank">
-          <LinkImage src={youtube} alt="youtube" />
-        </Link>
-        <Link href="https://x.com/NMIXX_official" title="Official X" target="_blank">
-          <LinkImage src={twitter} alt="twitter" />
-        </Link>
-        <Link href="https://www.instagram.com/nmixx_official" title="Official Instagram" target="_blank">
-          <LinkImage src={instagram} alt="instagram" />
-        </Link>
-        <Link href="https://www.facebook.com/p/NMIXXOfficial" title="Official Facebook" target="_blank">
-          <LinkImage src={facebook} alt="facebook" />
-        </Link>
-        <Link href="https://www.tiktok.com/@nmixx_official" title="Official TikTok" target="_blank">
-          <LinkImage src={tiktok} alt="tiktok" />
-        </Link>
-        <Link href="https://weibo.com/u/7710814551" title="Official Weibo" target="_blank">
-          <LinkImage src={weibo} alt="weibo" />
-        </Link>
-      </Wrapper>
-      <MobileWrapper>
-        {
-          isOpen ?
-            <Toggle src={close} alt="close" onClick={() => setIsOpen(false)} />
-            :
-            <Toggle src={menu} alt="open" onClick={() => setIsOpen(true)} />
-        }
-      </MobileWrapper>
-      {
-        isOpen ?
-          <MenuBox>
-            <MenuContainer>
-              <Menu href="/member" title="member">멤버</Menu>
-              {/* <Menu href="/album" title="album">앨범</Menu> */}
-              <Menu href="/translate" title="translate">자막변환</Menu>
-              <MobileLinkBox>
-                <Link href="https://www.youtube.com/@NMIXXOfficial" title="Official Youtube" target="_blank">
-                  <LinkImage src={youtube} alt="youtube" />
-                </Link>
-                <Link href="https://x.com/NMIXX_official" title="Official X" target="_blank">
-                  <LinkImage src={twitter} alt="twitter" />
-                </Link>
-                <Link href="https://www.instagram.com/nmixx_official" title="Official Instagram" target="_blank">
-                  <LinkImage src={instagram} alt="instagram" />
-                </Link>
-                <Link href="https://www.facebook.com/p/NMIXXOfficial" title="Official Facebook" target="_blank">
-                  <LinkImage src={facebook} alt="facebook" />
-                </Link>
-                <Link href="https://www.tiktok.com/@nmixx_official" title="Official TikTok" target="_blank">
-                  <LinkImage src={tiktok} alt="tiktok" />
-                </Link>
-                <Link href="https://weibo.com/u/7710814551" title="Official Weibo" target="_blank">
-                  <LinkImage src={weibo} alt="weibo" />
-                </Link>
-              </MobileLinkBox>
-            </MenuContainer>
-          </MenuBox>
-          :
-          <></>
-      }
-    </Component>
-  )
+	const [isOpen, setIsOpen] = useState<boolean>(false);
+	return (
+		<Component>
+			<Wrapper>
+				<Link
+					href="https://www.youtube.com/@NMIXXOfficial"
+					title="Official Youtube"
+					target="_blank"
+				>
+					<LinkImage src={youtube} alt="youtube" />
+				</Link>
+				<Link
+					href="https://x.com/NMIXX_official"
+					title="Official X"
+					target="_blank"
+				>
+					<LinkImage src={twitter} alt="twitter" />
+				</Link>
+				<Link
+					href="https://www.instagram.com/nmixx_official"
+					title="Official Instagram"
+					target="_blank"
+				>
+					<LinkImage src={instagram} alt="instagram" />
+				</Link>
+				<Link
+					href="https://www.facebook.com/p/NMIXXOfficial"
+					title="Official Facebook"
+					target="_blank"
+				>
+					<LinkImage src={facebook} alt="facebook" />
+				</Link>
+				<Link
+					href="https://www.tiktok.com/@nmixx_official"
+					title="Official TikTok"
+					target="_blank"
+				>
+					<LinkImage src={tiktok} alt="tiktok" />
+				</Link>
+				<Link
+					href="https://weibo.com/u/7710814551"
+					title="Official Weibo"
+					target="_blank"
+				>
+					<LinkImage src={weibo} alt="weibo" />
+				</Link>
+			</Wrapper>
+			<MobileWrapper>
+				{isOpen ? (
+					<Toggle src={close} alt="close" onClick={() => setIsOpen(false)} />
+				) : (
+					<Toggle src={menu} alt="open" onClick={() => setIsOpen(true)} />
+				)}
+			</MobileWrapper>
+			{isOpen ? (
+				<MenuBox>
+					<MenuContainer>
+						<Menu href="/member" title="member">
+							멤버
+						</Menu>
+						{/* <Menu href="/album" title="album">앨범</Menu> */}
+						<Menu href="/translate" title="translate">
+							자막변환
+						</Menu>
+						<MobileLinkBox>
+							<Link
+								href="https://www.youtube.com/@NMIXXOfficial"
+								title="Official Youtube"
+								target="_blank"
+							>
+								<LinkImage src={youtube} alt="youtube" />
+							</Link>
+							<Link
+								href="https://x.com/NMIXX_official"
+								title="Official X"
+								target="_blank"
+							>
+								<LinkImage src={twitter} alt="twitter" />
+							</Link>
+							<Link
+								href="https://www.instagram.com/nmixx_official"
+								title="Official Instagram"
+								target="_blank"
+							>
+								<LinkImage src={instagram} alt="instagram" />
+							</Link>
+							<Link
+								href="https://www.facebook.com/p/NMIXXOfficial"
+								title="Official Facebook"
+								target="_blank"
+							>
+								<LinkImage src={facebook} alt="facebook" />
+							</Link>
+							<Link
+								href="https://www.tiktok.com/@nmixx_official"
+								title="Official TikTok"
+								target="_blank"
+							>
+								<LinkImage src={tiktok} alt="tiktok" />
+							</Link>
+							<Link
+								href="https://weibo.com/u/7710814551"
+								title="Official Weibo"
+								target="_blank"
+							>
+								<LinkImage src={weibo} alt="weibo" />
+							</Link>
+						</MobileLinkBox>
+					</MenuContainer>
+				</MenuBox>
+			) : (
+				<></>
+			)}
+		</Component>
+	);
 }

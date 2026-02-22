@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import MemberSelect from "./MemberSelect";
-import MemberContent from "./MemberContent";
 import { media } from "../../lib/media";
+import MemberContent from "./MemberContent";
+import MemberSelect from "./MemberSelect";
 
 const Section = styled.section`
   width: 100%;
@@ -22,15 +22,15 @@ const Wrapper = styled.div`
     width: 100%;
     padding: 20px;
   `}
-`
+`;
 
 export default function MemberSection() {
-  return (
-    <Section>
-      <Wrapper>
-        <MemberContent />
-        <MemberSelect />
-      </Wrapper>
-    </Section>
-  )
+	return (
+		<Section>
+			<Wrapper>
+				<MemberContent />
+				<MemberSelect />
+			</Wrapper>
+		</Section>
+	);
 }

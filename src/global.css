@@ -1,54 +1,54 @@
 /* 폰트 불러오기 */
 @font-face {
-    font-family: 'Pretendard';
-    font-weight: 45 920;
-    font-style: normal;
-    font-display: swap;
-    src: url('./assets/fonts/PretendardVariable.woff2') format('woff2-variations');
+	font-family: "Pretendard";
+	font-weight: 45 920;
+	font-style: normal;
+	font-display: swap;
+	src: url("./assets/fonts/PretendardVariable.woff2") format("woff2-variations");
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Pretendard';
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Pretendard", sans-serif;
 }
 
 @keyframes wobble {
-    0% {
-        transform: rotate(0deg);
-    }
+	0% {
+		transform: rotate(0deg);
+	}
 
-    20% {
-        transform: rotate(3deg);
-    }
+	20% {
+		transform: rotate(3deg);
+	}
 
-    40% {
-        transform: rotate(-3deg);
-    }
+	40% {
+		transform: rotate(-3deg);
+	}
 
-    60% {
-        transform: rotate(2deg);
-    }
+	60% {
+		transform: rotate(2deg);
+	}
 
-    80% {
-        transform: rotate(-2deg);
-    }
+	80% {
+		transform: rotate(-2deg);
+	}
 
-    100% {
-        transform: rotate(0deg);
-    }
+	100% {
+		transform: rotate(0deg);
+	}
 }
 
 @keyframes ripple {
-    0% {
-        transform: translateY(-50%) scaleY(0.1);
-        opacity: 0.8;
-    }
+	0% {
+		transform: translateY(-50%) scaleY(0.1);
+		opacity: 0.8;
+	}
 
-    100% {
-        transform: translateY(-50%) scaleY(1.8);
-        /* 퍼져나가는 정도 */
-        opacity: 0;
-    }
+	100% {
+		transform: translateY(-50%) scaleY(1.8);
+		/* 퍼져나가는 정도 */
+		opacity: 0;
+	}
 }

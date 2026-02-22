@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import { media } from "../../../lib/media";
 import { HeaderLeft } from "./HeaderLeft";
 import { HeaderRight } from "./HeaderRight";
-import { media } from "../../../lib/media";
 
 const Compoent = styled.div`
   display: flex;
@@ -17,10 +17,10 @@ const Compoent = styled.div`
 `;
 
 export function HeaderWrapper() {
-  return (
-    <Compoent>
-      <HeaderLeft />
-      <HeaderRight />
-    </Compoent>
-  )
+	return (
+		<Compoent>
+			<HeaderLeft />
+			<HeaderRight />
+		</Compoent>
+	);
 }

@@ -8,9 +8,9 @@ const Section = styled.section`
 `;
 
 export function TranslateBox() {
-  return (
-    <Section>
-      <TranslateWidget />
-    </Section>
-  )
+	return (
+		<Section>
+			<TranslateWidget />
+		</Section>
+	);
 }

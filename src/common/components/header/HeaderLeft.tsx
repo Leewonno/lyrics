@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { media } from "../../../lib/media";
+
 // import logo from "../../../assets/images/nmixx.svg"
 
 const Component = styled.div`
@@ -16,7 +17,7 @@ const LogoContainer = styled.div`
     transform: scale(1.1);
     letter-spacing: 1px;
   }
-`
+`;
 
 const Logo = styled.a`
   width: auto;
@@ -26,13 +27,13 @@ const Logo = styled.a`
   color: #000;
   cursor: pointer;
   user-select: none;
-`
+`;
 
 const MenuContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-`
+`;
 
 const Menu = styled.a`
   text-decoration: none;
@@ -47,20 +48,26 @@ const Menu = styled.a`
   ${media.phone`
     display: none;
   `}
-`
+`;
 
 export function HeaderLeft() {
-  return (
-    <Component>
-      {/* <LogoImage src={logo} alt="logo" /> */}
-      <LogoContainer>
-        <Logo href="/" title="NMIXX">NMIXX</Logo>
-      </LogoContainer>
-      <MenuContainer>
-        <Menu href="/member" title="member">멤버</Menu>
-        {/* <Menu href="/album" title="album">앨범</Menu> */}
-        <Menu href="/translate" title="translate">자막변환</Menu>
-      </MenuContainer>
-    </Component>
-  )
+	return (
+		<Component>
+			{/* <LogoImage src={logo} alt="logo" /> */}
+			<LogoContainer>
+				<Logo href="/" title="NMIXX">
+					NMIXX
+				</Logo>
+			</LogoContainer>
+			<MenuContainer>
+				<Menu href="/member" title="member">
+					멤버
+				</Menu>
+				{/* <Menu href="/album" title="album">앨범</Menu> */}
+				<Menu href="/translate" title="translate">
+					자막변환
+				</Menu>
+			</MenuContainer>
+		</Component>
+	);
 }

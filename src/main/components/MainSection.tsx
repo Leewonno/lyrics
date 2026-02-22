@@ -13,5 +13,5 @@ export function MainSection() {
     <Section>
       <MainContent />
     </Section>
-  )
+  );
 }

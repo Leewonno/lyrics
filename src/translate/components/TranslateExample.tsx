@@ -53,15 +53,22 @@ const Widget = styled.div`
 `;
 
 export function TranslateExample() {
-  return (
-    <Widget>
-      <h1>이용 방법</h1>
-      <div>① 가사를 입력합니다.</div>
-      <div>② <span style={{ backgroundColor: '#0d6efd' }}>변환</span> 버튼을 누릅니다.</div>
-      <div>③ <span style={{ backgroundColor: '#198754' }}>복사</span> 혹은  <span style={{ backgroundColor: '#919191' }}>다운로드</span> 버튼을 누릅니다.</div>
-      {/* <h1>팁(TIP)</h1>
+	return (
+		<Widget>
+			<h1>이용 방법</h1>
+			<div>① 가사를 입력합니다.</div>
+			<div>
+				② <span style={{ backgroundColor: "#0d6efd" }}>변환</span> 버튼을
+				누릅니다.
+			</div>
+			<div>
+				③ <span style={{ backgroundColor: "#198754" }}>복사</span> 혹은{" "}
+				<span style={{ backgroundColor: "#919191" }}>다운로드</span> 버튼을
+				누릅니다.
+			</div>
+			{/* <h1>팁(TIP)</h1>
       <div>① 자막 재생 시간을 설정할 수 있습니다.</div>
       <div>② 초기화 버튼은 모든 입력 창을 초기화합니다.</div> */}
-    </Widget>
-  )
+		</Widget>
+	);
 }

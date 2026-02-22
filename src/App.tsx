@@ -6,15 +6,15 @@ import "./global.css";
 import { RouteChangeTracker } from "./common/components/RouteChangeTracker";
 
 function App() {
-  return (
-    <>
-      <RouteChangeTracker />
-      <Header />
-      <Outlet />
-      <Toast />
-      <Footer />
-    </>
-  );
+	return (
+		<>
+			<RouteChangeTracker />
+			<Header />
+			<Outlet />
+			<Toast />
+			<Footer />
+		</>
+	);
 }
 
 export default App;

@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled, { keyframes } from "styled-components";
-import { noneVisible } from '../redux/features/toast/toast';
+import { noneVisible } from "../redux/features/toast/toast";
+import type { RootState } from "../redux/store";
 
 const Fade = keyframes`
   0% {
@@ -21,7 +22,7 @@ const Fade = keyframes`
   100% {
     opacity: 0;
   }
-`
+`;
 
 const Widget = styled.div`
   width: 100%;
@@ -43,41 +44,40 @@ const Content = styled.div`
   border-radius: 50px;
   background-color: #909090;
   color: #fff;
-`
+`;
 
 const Image = styled.img`
   width: 25px;
   margin-right: 10px;
-`
+`;
 
 export const Toast: React.FC = () => {
+	const message = useSelector((state: RootState) => state.toast.message);
+	const status = useSelector((state: RootState) => state.toast.status);
+	const dispatch = useDispatch();
 
-  const message = useSelector((state: any) => state.toast.message);
-  const status = useSelector((state: any) => state.toast.status);
-  const dispatch = useDispatch();
+	const displayNone = {
+		display: "none",
+	};
 
-  const displayNone = {
-    'display': 'none'
-  }
+	const displayFlex = {
+		display: "flex",
+	};
 
-  const displayFlex = {
-    'display': 'flex'
-  }
+	useEffect(() => {
+		if (!status) return;
+		const timer = setTimeout(() => {
+			dispatch(noneVisible());
+		}, 1500);
+		return () => clearTimeout(timer);
+	}, [status, dispatch]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      dispatch(noneVisible())
-    }, 1500)
-
-    return () => clearTimeout(timer);
-  }, [status])
-
-  return (
-    <Widget style={status ? displayFlex : displayNone}>
-      <Content>
-        <Image src={'../image/check.png'} />
-        {message}
-      </Content>
-    </Widget>
-  )
-}
+	return (
+		<Widget style={status ? displayFlex : displayNone}>
+			<Content>
+				<Image src={"../image/check.png"} />
+				{message}
+			</Content>
+		</Widget>
+	);
+};

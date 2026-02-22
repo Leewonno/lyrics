@@ -15,9 +15,9 @@ const Widget = styled.header`
 `;
 
 export function Header() {
-  return (
-    <Widget>
-      <HeaderWrapper />
-    </Widget>
-  )
+	return (
+		<Widget>
+			<HeaderWrapper />
+		</Widget>
+	);
 }
