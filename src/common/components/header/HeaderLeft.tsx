@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { media } from "../../../lib/media";
 
-// import logo from "../../../assets/images/nmixx.svg"
-
 const Component = styled.div`
   display: flex;
   gap: 2rem;
@@ -24,7 +22,7 @@ const Logo = styled.a`
   font-size: 1.8rem;
   font-weight: 600;
   text-decoration: none;
-  color: #000;
+  color: #ffffff;
   cursor: pointer;
   user-select: none;
 `;
@@ -37,11 +35,12 @@ const MenuContainer = styled.div`
 
 const Menu = styled.a`
   text-decoration: none;
-  color: #000;
+  color: rgba(255, 255, 255, 0.7);
   font-weight: 400;
-  transition: font-weight 0.3s;
+  transition: color 0.2s, font-weight 0.2s;
 
   &:hover {
+    color: #ffffff;
     font-weight: 600;
   }
 
@@ -53,7 +52,6 @@ const Menu = styled.a`
 export function HeaderLeft() {
 	return (
 		<Component>
-			{/* <LogoImage src={logo} alt="logo" /> */}
 			<LogoContainer>
 				<Logo href="/" title="NMIXX">
 					NMIXX
@@ -63,7 +61,6 @@ export function HeaderLeft() {
 				<Menu href="/member" title="member">
 					멤버
 				</Menu>
-				{/* <Menu href="/album" title="album">앨범</Menu> */}
 				<Menu href="/translate" title="translate">
 					자막변환
 				</Menu>

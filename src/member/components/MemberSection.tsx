@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import memberBg from "../../assets/images/common_bg.jpg";
+import memberBg from "../../assets/images/common_bg.webp";
 import { media } from "../../lib/media";
 import MemberContent from "./MemberContent";
 import MemberSelect from "./MemberSelect";

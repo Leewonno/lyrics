@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import mainBg from "../../assets/images/common_bg.webp";
 import { MainContent } from "./MainContent";
 
 const Section = styled.section`
@@ -7,6 +8,19 @@ const Section = styled.section`
   justify-content: center;
   min-height: 100vh;
   padding-bottom: 100px;
+  background-image: url(${mainBg});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 30, 0.65);
+  }
 `;
 
 export function MainSection() {

@@ -36,6 +36,11 @@ const Container = styled.div`
     bottom: 0 !important;
     position: absolute;
     cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .swiper-scrollbar-drag {
+    background: rgba(255, 255, 255, 0.7);
   }
 
   ${media.phone`
@@ -62,6 +67,8 @@ const Title = styled.div`
   text-align: center;
   font-weight: 600;
   font-size: 2rem;
+  color: #ffffff;
+  letter-spacing: 0.1em;
 
   ${media.phone`
     font-size: 1.5rem;

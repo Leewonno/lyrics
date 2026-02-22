@@ -1,10 +1,12 @@
 import styled from "styled-components";
-import MainSwiper from "./MainSwiper";
+import { media } from "../../lib/media";
 import MainExplain from "./MainExplain";
 import MainMember from "./MainMember";
-import { media } from "../../lib/media";
+import MainSwiper from "./MainSwiper";
 
 const Box = styled.div`
+  position: relative;
+  z-index: 1;
   width: 100%;
   margin-top: 150px;
   display: flex;
@@ -27,14 +29,14 @@ const Box = styled.div`
 `;
 
 export function MainContent() {
-  return (
-    <Box>
-      {/* MV 슬라이드 */}
-      <MainSwiper />
-      {/* NMIXX 소개 */}
-      <MainExplain />
-      {/* 멤버 */}
-      <MainMember />
-    </Box>
-  );
+	return (
+		<Box>
+			{/* MV 슬라이드 */}
+			<MainSwiper />
+			{/* NMIXX 소개 */}
+			<MainExplain />
+			{/* 멤버 */}
+			<MainMember />
+		</Box>
+	);
 }

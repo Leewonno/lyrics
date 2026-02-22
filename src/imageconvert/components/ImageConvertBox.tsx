@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import convertBg from "../../assets/images/common_bg.jpg";
+import convertBg from "../../assets/images/common_bg.webp";
 import { ImageConvertWidget } from "./ImageConvertWidget";
 
 const Section = styled.section`

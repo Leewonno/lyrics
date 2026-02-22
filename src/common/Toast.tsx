@@ -4,16 +4,13 @@ import styled, { keyframes } from "styled-components";
 import { noneVisible } from "../redux/features/toast/toast";
 import type { RootState } from "../redux/store";
 
-const Fade = keyframes`
+const slideUp = keyframes`
   0% {
-    transform: translateY(100px);
+    transform: translateY(16px);
     opacity: 0;
   }
-  25% {
-    transform: translateY(0px);
-    opacity: 1;
-  }
-  50% {
+  15% {
+    transform: translateY(0);
     opacity: 1;
   }
   75% {
@@ -27,43 +24,49 @@ const Fade = keyframes`
 const Widget = styled.div`
   width: 100%;
   position: fixed;
-  bottom: 50%;
+  bottom: 2rem;
+  left: 0;
   display: none;
   justify-content: center;
   align-items: center;
-  animation: ${Fade} 1.5s infinite linear alternate;
-  z-index: 1000;
+  animation: ${slideUp} 1.5s ease-out forwards;
+  z-index: 9999;
+  pointer-events: none;
 `;
 
 const Content = styled.div`
-  font-size: 16px;
-  padding: 10px 20px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  border: 1px solid #c3c3c3;
-  border-radius: 50px;
-  background-color: #909090;
-  color: #fff;
+  gap: 0.5rem;
+  padding: 0.65rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: rgba(15, 15, 35, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
 `;
 
-const Image = styled.img`
-  width: 25px;
-  margin-right: 10px;
+const CheckIcon = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 0.65rem;
+  flex-shrink: 0;
 `;
 
 export const Toast: React.FC = () => {
 	const message = useSelector((state: RootState) => state.toast.message);
 	const status = useSelector((state: RootState) => state.toast.status);
 	const dispatch = useDispatch();
-
-	const displayNone = {
-		display: "none",
-	};
-
-	const displayFlex = {
-		display: "flex",
-	};
 
 	useEffect(() => {
 		if (!status) return;
@@ -74,9 +77,9 @@ export const Toast: React.FC = () => {
 	}, [status, dispatch]);
 
 	return (
-		<Widget style={status ? displayFlex : displayNone}>
+		<Widget style={{ display: status ? "flex" : "none" }}>
 			<Content>
-				<Image src={"../image/check.png"} />
+				<CheckIcon>✓</CheckIcon>
 				{message}
 			</Content>
 		</Widget>

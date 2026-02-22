@@ -10,9 +10,7 @@ import weibo from "../../../assets/icons/weibo.svg";
 import youtube from "../../../assets/icons/youtube.svg";
 import { media } from "../../../lib/media";
 
-const Component = styled.div`
-
-`;
+const Component = styled.div``;
 
 const Wrapper = styled.div`
   display: flex;
@@ -47,11 +45,18 @@ const Link = styled.a`
 
 const LinkImage = styled.img`
   width: 90%;
+  filter: invert(1) opacity(0.75);
+  transition: filter 0.2s;
+
+  ${Link}:hover & {
+    filter: invert(1) opacity(1);
+  }
 `;
 
 const Toggle = styled.img`
   width: 25px;
   cursor: pointer;
+  filter: invert(1);
 `;
 
 const MenuBox = styled.div`
@@ -73,20 +78,23 @@ const MenuContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  background-color: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(5px);
+  background: rgba(10, 10, 30, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   padding: 1rem;
   border-radius: 1rem;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 `;
 
 const Menu = styled.a`
   text-decoration: none;
-  color: #000;
+  color: rgba(255, 255, 255, 0.8);
   font-weight: 400;
-  transition: font-weight 0.3s;
+  transition: color 0.2s, font-weight 0.2s;
 
   &:hover {
+    color: #ffffff;
     font-weight: 600;
   }
 `;
@@ -161,7 +169,6 @@ export function HeaderRight() {
 						<Menu href="/member" title="member">
 							멤버
 						</Menu>
-						{/* <Menu href="/album" title="album">앨범</Menu> */}
 						<Menu href="/translate" title="translate">
 							자막변환
 						</Menu>

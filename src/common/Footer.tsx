@@ -3,8 +3,10 @@ import styled from "styled-components";
 const Widget = styled.footer`
   width: 100%;
   height: 150px;
-  /* margin-top: 100px; */
-  background-color: #202020;
+  background: rgba(10, 10, 30, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: center;
   position: relative;
@@ -14,7 +16,7 @@ const Widget = styled.footer`
 
 const Copyright = styled.div`
   font-size: 0.9rem;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.45);
 `;
 
 export function Footer() {
