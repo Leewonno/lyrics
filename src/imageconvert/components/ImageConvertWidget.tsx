@@ -1,5 +1,5 @@
-import encodeWebp, { init as initWebpEncoder } from "@jsquash/webp/encode";
 import webpEncWasmUrl from "@jsquash/webp/codec/enc/webp_enc.wasm?url";
+import encodeWebp, { init as initWebpEncoder } from "@jsquash/webp/encode";
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
@@ -10,7 +10,6 @@ const Widget = styled.div`
   position: relative;
   z-index: 1;
   width: 960px;
-  margin-top: 100px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -20,6 +19,7 @@ const Widget = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   padding: 2rem;
+  margin-top: 100px;
 
   ${media.phone`
     width: 100%;

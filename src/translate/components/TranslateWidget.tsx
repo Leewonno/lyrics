@@ -31,7 +31,7 @@ const WidgetForm = styled.form`
 
   ${media.phone`
     width: 100%;
-    margin: 5%;
+    margin: 0 5% 0;
     padding: 1.2rem;
   `}
 `;
