@@ -139,8 +139,8 @@ const videos: VideoItem[] = [
 	{ id: "_Q8Jskeps9w", title: "See that?" },
 	{ id: "7UecFm_bSTU", title: "DASH" },
 	{ id: "Rd2wppggYxo", title: "Party O' Clock" },
-	{ id: "kBwikDvbRbI", title: "Love Me Like This" },
-	{ id: "EDnwWcFpObo", title: "Funky Glitter Christmas" },
+	{ id: "EDnwWcFpObo", title: "Love Me Like This" },
+	{ id: "kBwikDvbRbI", title: "Funky Glitter Christmas" },
 	{ id: "p1bjnyDqI9k", title: "DICE" },
 	{ id: "3GWscde8rM8", title: "O.O" },
 ];
@@ -169,7 +169,10 @@ function VideoSlide({ video }: VideoSlideProps) {
 						alt={video.title}
 						loading="lazy"
 					/>
-					<PlayOverlay onClick={() => setActive(true)} aria-label={`${video.title} 재생`}>
+					<PlayOverlay
+						onClick={() => setActive(true)}
+						aria-label={`${video.title} 재생`}
+					>
 						<PlayIcon />
 					</PlayOverlay>
 				</>
