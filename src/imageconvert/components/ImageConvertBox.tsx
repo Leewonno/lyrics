@@ -6,6 +6,7 @@ const Section = styled.section`
   min-height: 100vh;
   display: flex;
   justify-content: center;
+  padding-bottom: 100px;
 `;
 
 export function ImageConvertBox() {

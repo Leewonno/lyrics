@@ -6,12 +6,13 @@ const Section = styled.section`
   display: flex;
   justify-content: center;
   min-height: 100vh;
+  padding-bottom: 100px;
 `;
 
 export function MainSection() {
-  return (
-    <Section>
-      <MainContent />
-    </Section>
-  );
+	return (
+		<Section>
+			<MainContent />
+		</Section>
+	);
 }
