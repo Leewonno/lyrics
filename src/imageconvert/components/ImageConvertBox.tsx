@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import convertBg from "../../assets/images/common_bg.webp";
+import { media } from "../../lib/media";
 import { ImageConvertWidget } from "./ImageConvertWidget";
 
 const Section = styled.section`
@@ -14,6 +15,10 @@ const Section = styled.section`
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
+
+  ${media.phone`
+    background-attachment: scroll;
+  `}
 
   &::before {
     content: "";

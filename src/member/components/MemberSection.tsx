@@ -28,7 +28,7 @@ const Section = styled.section`
   }
 
   ${media.phone`
-
+    background-attachment: scroll;
   `}
 `;
 
