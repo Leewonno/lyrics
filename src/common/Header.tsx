@@ -6,11 +6,11 @@ const Widget = styled.header`
   z-index: 10;
   top: 0;
   width: 100%;
-  height: 60px;
-  background: rgba(10, 10, 30, 0.6);
+  height: 65px;
+  background: rgba(10, 55, 90, 0.6);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(135, 206, 235, 0.2);
   display: flex;
   justify-content: center;
 `;

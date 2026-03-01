@@ -88,6 +88,10 @@ const UploadArea = styled.label`
     border-color: rgba(200, 200, 250, 0.7);
     background: rgba(255, 255, 255, 0.08);
   }
+
+  ${media.phone`
+    padding: 1rem;
+  `}
 `;
 
 const HiddenInput = styled.input`
